@@ -1,5 +1,7 @@
-# PIT-Hackathon 2017 WebGame Phaser ES2017 Tempalte
-#### A template to create games with Phaser using ES2017 and Webpack.
+# PIT-Hackathon 2017 WebGame Phaser ES2017 Template
+ A template to create games with Phaser using ES2017 and Webpack.
+
+ You can try the game template online on [https://pit-hackathon.github.io/2017-WebGame-Phaser-ES2017/](https://pit-hackathon.github.io/2017-WebGame-Phaser-ES2017/)
 
 ![Phaser+ES6+Webpack](assets/images/header.jpg)
 
