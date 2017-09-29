@@ -11168,7 +11168,11 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
+<<<<<<< HEAD
       this.gameOver = this.add.text(0, 40, 'Win');
+=======
+      this.gameOver = this.add.text(0, 40, 'ok');
+>>>>>>> a5938348eb9304ae4b1d3214791219e53b99c9a3
       this.gameOver.font = 'Bangers';
       this.gameOver.padding.set(10, 16);
       this.gameOver.fontSize = 100;
@@ -11188,6 +11192,8 @@ var _class = function (_Phaser$State) {
 
   return _class;
 }(_phaserCe2.default.State);
+//testkommentar
+
 
 exports.default = _class;
 
