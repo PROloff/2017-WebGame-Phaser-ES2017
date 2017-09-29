@@ -11101,73 +11101,10 @@ exports.default = _class;
   \********************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 128);
-
-var _Piteroid2 = _interopRequireDefault(_Piteroid);
-
-var _Ship = __webpack_require__(/*! ../sprites/Ship */ 129);
-
-var _Ship2 = _interopRequireDefault(_Ship);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$State) {
-  _inherits(_class, _Phaser$State);
-
-  function _class() {
-    _classCallCheck(this, _class);
-
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-  }
-
-  _createClass(_class, [{
-    key: 'create',
-    value: function create() {
-      this.gameOver = this.add.text(0, 40, 'hallo');
-      this.gameOver.font = 'Bangers';
-      this.gameOver.padding.set(10, 16);
-      this.gameOver.fontSize = 100;
-      this.gameOver.fill = '#DF1D28';
-      this.gameOver.smoothed = false;
-      this.gameOver.anchor.setTo(0.5);
-
-      this.resize();
-    }
-  }, {
-    key: 'resize',
-    value: function resize() {
-      this.gameOver.x = this.world.centerX;
-      this.gameOver.y = this.world.centerY;
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.State);
-//ja moin
-
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: C:/Users/schueler.S9-NEU/Desktop/Jump-n-Gun/src/states/GameOver.js: Unexpected token (8:0)\n\n\u001b[0m \u001b[90m  6 | \u001b[39m\n \u001b[90m  7 | \u001b[39m  create () {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  8 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  9 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgameOver \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39madd\u001b[33m.\u001b[39mtext(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m \u001b[35m40\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'hallo'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 10 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\n \u001b[90m 11 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgameOver \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39madd\u001b[33m.\u001b[39mtext(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m \u001b[35m40\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'Win'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ })
 ],[130]);

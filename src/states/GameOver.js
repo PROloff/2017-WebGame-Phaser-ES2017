@@ -5,7 +5,11 @@ import Ship from '../sprites/Ship';
 export default class extends Phaser.State {
 
   create () {
+<<<<<<< HEAD
     this.gameOver = this.add.text(0, 40, 'hallo');
+=======
+    this.gameOver = this.add.text(0, 40, 'Win');
+>>>>>>> 0e08469fb347d0ddd863775345781c2651d106db
     this.gameOver.font = 'Bangers';
     this.gameOver.padding.set(10, 16);
     this.gameOver.fontSize = 100;
