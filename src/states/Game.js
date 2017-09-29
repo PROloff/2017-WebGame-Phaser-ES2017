@@ -5,13 +5,13 @@ import Ship from '../sprites/Ship';
 export default class extends Phaser.State {
   init() { }
   preload() { }
-
+  
   create() {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.game.time.desiredFps = 30;
 
-    this.bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
     this.game.physics.arcade.gravity.y = 250;
 
@@ -32,7 +32,7 @@ export default class extends Phaser.State {
 
   update() {
     this.player.body.velocity.x = 0;
-
+    this.jumpTimer = 0;
     if (this.cursors.left.isDown) {
       this.player.body.velocity.x = -150;
 
@@ -64,7 +64,7 @@ export default class extends Phaser.State {
       }
     }
 
-    if (this.jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+    if (this.jumpButton.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer) {
       this.player.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }

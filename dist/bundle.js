@@ -10974,7 +10974,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bullet', 'assets/images/bullet.png');
       this.load.image('ship', 'assets/images/ship.png');
       this.load.image('smoke', 'assets/images/smoke.png');
-      this.load.image('dude', 'assets/images/dude.png', 32, 48);
+      this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
     }
   }, {
@@ -11049,7 +11049,7 @@ var _class = function (_Phaser$State) {
 
       this.game.time.desiredFps = 30;
 
-      this.bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
       this.game.physics.arcade.gravity.y = 250;
 
@@ -11071,7 +11071,7 @@ var _class = function (_Phaser$State) {
     key: 'update',
     value: function update() {
       this.player.body.velocity.x = 0;
-
+      this.jumpTimer = 0;
       if (this.cursors.left.isDown) {
         this.player.body.velocity.x = -150;
 
@@ -11100,7 +11100,7 @@ var _class = function (_Phaser$State) {
         }
       }
 
-      if (this.jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+      if (this.jumpButton.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer) {
         this.player.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
