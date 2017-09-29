@@ -7,44 +7,80 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
-    this.header = this.add.text(0, 40, 'PIT-Hackathon 2017');
-    this.header.font = 'Bangers';
-    this.header.padding.set(10, 16);
-    this.header.fontSize = 100;
-    this.header.fill = '#DF1D28';
-    this.header.smoothed = false;
-    this.header.anchor.setTo(0.5);
-
-    this.ship = new Ship(this.game);
-    this.game.add.existing(this.ship);
-    this.ship.position.set(this.world.centerX, this.world.centerY);
-
-    this.piteroids = this.game.add.group();
-    for(let i=0;i<10;i++) {
-      let piteroid = new Piteroid(this.game);
-      this.piteroids.add(piteroid);
-    }
-
-    this.resize();
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+        game.time.desiredFps = 30;
+    
+        game.physics.arcade.gravity.y = 250;
+    
+        player = game.add.sprite(32, 32, 'ship');
+        game.physics.enable(player, Phaser.Physics.ARCADE);
+    
+        player.body.bounce.y = 0.2;
+        player.body.collideWorldBounds = true;
+        player.body.setSize(20, 32, 5, 16);
+    
+        //player.animations.add('left', [0, 1, 2, 3], 10, true);
+        //player.animations.add('turn', [4], 20, true);
+        //player.animations.add('right', [5, 6, 7, 8], 10, true);
+    
+        cursors = game.input.keyboard.createCursorKeys();
+        jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    
   }
 
   update() {
-    this.game.physics.arcade.overlap(this.ship.bullets, this.piteroids, this.piteroidHit, null, this);
+    // game.physics.arcade.collide(player, layer);
 
-    if(this.piteroids.countLiving() == 0) {
-      this.state.start('GameOver');
-    }
+    player.body.velocity.x = 0;
+    
+        if (cursors.left.isDown)
+        {
+            player.body.velocity.x = -150;
+    
+            //if (facing != 'left')
+            //{
+            //    player.animations.play('left');
+            //    facing = 'left';
+            //}
+        }
+        else if (cursors.right.isDown)
+        {
+            player.body.velocity.x = 150;
+    
+            //if (facing != 'right')
+            //{
+                //player.animations.play('right');
+                //facing = 'right';
+            //}
+        }
+        else
+        {
+            if (facing != 'idle')
+            {
+                player.animations.stop();
+    
+                //if (facing == 'left')
+                //{
+                //    player.frame = 0;
+                //}
+                //else
+                //{
+                //    player.frame = 5;
+                //}
+    
+                facing = 'idle';
+            }
+        }
+        
+        if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer)
+        {
+            player.body.velocity.y = -250;
+            jumpTimer = game.time.now + 750;
+        }
+    
   }
 
-  piteroidHit (bullet, piteroid) {    
-    bullet.kill();
-    piteroid.kill();    
-  }
-
-  resize() {
-    this.header.x = this.world.centerX;
-    this.header.y = 40;
-  }
 
   render () {}
 }

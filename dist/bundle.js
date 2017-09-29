@@ -4422,11 +4422,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
-=======
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
->>>>>>> 557eb70ce5e1f3f3eea748fea1439c76474b133a
 
 
 /***/ }),
@@ -11004,7 +11000,7 @@ exports.default = _class;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11030,70 +11026,94 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _class = function (_Phaser$State) {
-  _inherits(_class, _Phaser$State);
+    _inherits(_class, _Phaser$State);
 
-  function _class() {
-    _classCallCheck(this, _class);
+    function _class() {
+        _classCallCheck(this, _class);
 
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-  }
-
-  _createClass(_class, [{
-    key: 'init',
-    value: function init() {}
-  }, {
-    key: 'preload',
-    value: function preload() {}
-  }, {
-    key: 'create',
-    value: function create() {
-      this.header = this.add.text(0, 40, 'PIT-Hackathon 2017');
-      this.header.font = 'Bangers';
-      this.header.padding.set(10, 16);
-      this.header.fontSize = 100;
-      this.header.fill = '#DF1D28';
-      this.header.smoothed = false;
-      this.header.anchor.setTo(0.5);
-
-      this.ship = new _Ship2.default(this.game);
-      this.game.add.existing(this.ship);
-      this.ship.position.set(this.world.centerX, this.world.centerY);
-
-      this.piteroids = this.game.add.group();
-      for (var i = 0; i < 10; i++) {
-        var piteroid = new _Piteroid2.default(this.game);
-        this.piteroids.add(piteroid);
-      }
-
-      this.resize();
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
     }
-  }, {
-    key: 'update',
-    value: function update() {
-      this.game.physics.arcade.overlap(this.ship.bullets, this.piteroids, this.piteroidHit, null, this);
 
-      if (this.piteroids.countLiving() == 0) {
-        this.state.start('GameOver');
-      }
-    }
-  }, {
-    key: 'piteroidHit',
-    value: function piteroidHit(bullet, piteroid) {
-      bullet.kill();
-      piteroid.kill();
-    }
-  }, {
-    key: 'resize',
-    value: function resize() {
-      this.header.x = this.world.centerX;
-      this.header.y = 40;
-    }
-  }, {
-    key: 'render',
-    value: function render() {}
-  }]);
+    _createClass(_class, [{
+        key: 'init',
+        value: function init() {}
+    }, {
+        key: 'preload',
+        value: function preload() {}
+    }, {
+        key: 'create',
+        value: function create() {
+            game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
 
-  return _class;
+            game.time.desiredFps = 30;
+
+            game.physics.arcade.gravity.y = 250;
+
+            player = game.add.sprite(32, 32, 'ship');
+            game.physics.enable(player, _phaserCe2.default.Physics.ARCADE);
+
+            player.body.bounce.y = 0.2;
+            player.body.collideWorldBounds = true;
+            player.body.setSize(20, 32, 5, 16);
+
+            //player.animations.add('left', [0, 1, 2, 3], 10, true);
+            //player.animations.add('turn', [4], 20, true);
+            //player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+            cursors = game.input.keyboard.createCursorKeys();
+            jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
+        }
+    }, {
+        key: 'update',
+        value: function update() {
+            // game.physics.arcade.collide(player, layer);
+
+            player.body.velocity.x = 0;
+
+            if (cursors.left.isDown) {
+                player.body.velocity.x = -150;
+
+                //if (facing != 'left')
+                //{
+                //    player.animations.play('left');
+                //    facing = 'left';
+                //}
+            } else if (cursors.right.isDown) {
+                player.body.velocity.x = 150;
+
+                //if (facing != 'right')
+                //{
+                //player.animations.play('right');
+                //facing = 'right';
+                //}
+            } else {
+                if (facing != 'idle') {
+                    player.animations.stop();
+
+                    //if (facing == 'left')
+                    //{
+                    //    player.frame = 0;
+                    //}
+                    //else
+                    //{
+                    //    player.frame = 5;
+                    //}
+
+                    facing = 'idle';
+                }
+            }
+
+            if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+                player.body.velocity.y = -250;
+                jumpTimer = game.time.now + 750;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {}
+    }]);
+
+    return _class;
 }(_phaserCe2.default.State);
 
 exports.default = _class;
@@ -11148,11 +11168,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-<<<<<<< HEAD
-      this.gameOver = this.add.text(0, 40, 'DU Kek');
-=======
-      this.gameOver = this.add.text(0, 40, 'Game Over');
->>>>>>> 557eb70ce5e1f3f3eea748fea1439c76474b133a
+      this.gameOver = this.add.text(0, 40, 'Win');
       this.gameOver.font = 'Bangers';
       this.gameOver.padding.set(10, 16);
       this.gameOver.fontSize = 100;
