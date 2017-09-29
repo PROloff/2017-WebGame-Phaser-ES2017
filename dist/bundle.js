@@ -4422,11 +4422,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
-=======
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
->>>>>>> 557eb70ce5e1f3f3eea748fea1439c76474b133a
 
 
 /***/ }),
@@ -11148,11 +11144,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-<<<<<<< HEAD
-      this.gameOver = this.add.text(0, 40, 'DU Kek');
-=======
-      this.gameOver = this.add.text(0, 40, 'Game Over');
->>>>>>> 557eb70ce5e1f3f3eea748fea1439c76474b133a
+      this.gameOver = this.add.text(0, 40, 'ok');
       this.gameOver.font = 'Bangers';
       this.gameOver.padding.set(10, 16);
       this.gameOver.fontSize = 100;
@@ -11172,6 +11164,8 @@ var _class = function (_Phaser$State) {
 
   return _class;
 }(_phaserCe2.default.State);
+//testkommentar
+
 
 exports.default = _class;
 
