@@ -10974,7 +10974,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bullet', 'assets/images/bullet.png');
       this.load.image('ship', 'assets/images/ship.png');
       this.load.image('smoke', 'assets/images/smoke.png');
-      this.load.image('dude', 'assets/images/dude.png');
+      this.load.image('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
     }
   }, {
