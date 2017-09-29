@@ -3,48 +3,76 @@ import Piteroid from '../sprites/Piteroid';
 import Ship from '../sprites/Ship';
 
 export default class extends Phaser.State {
-  init () {}
-  preload () {}
+  init() { }
+  preload() { }
+  
+  create() {
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-  create () {
-    this.header = this.add.text(0, 40, 'PIT-Hackathon 2017');
-    this.header.font = 'Bangers';
-    this.header.padding.set(10, 16);
-    this.header.fontSize = 100;
-    this.header.fill = '#DF1D28';
-    this.header.smoothed = false;
-    this.header.anchor.setTo(0.5);
+    this.game.time.desiredFps = 30;
 
-    this.ship = new Ship(this.game);
-    this.game.add.existing(this.ship);
-    this.ship.position.set(this.world.centerX, this.world.centerY);
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
-    this.piteroids = this.game.add.group();
-    for(let i=0;i<10;i++) {
-      let piteroid = new Piteroid(this.game);
-      this.piteroids.add(piteroid);
-    }
+    this.game.physics.arcade.gravity.y = 250;
 
-    this.resize();
+    this.player = game.add.sprite(32, 32, 'dude');
+    this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
+
+    this.player.body.bounce.y = 0.2;
+    this.player.body.collideWorldBounds = true;
+    this.player.body.setSize(20, 32, 5, 16);
+
+    this.player.animations.add('left', [0, 1, 2, 3], 10, true);
+    this.player.animations.add('turn', [4], 20, true);
+    this.player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    this.cursors = game.input.keyboard.createCursorKeys();
+    this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   }
 
   update() {
-    this.game.physics.arcade.overlap(this.ship.bullets, this.piteroids, this.piteroidHit, null, this);
+    this.player.body.velocity.x = 0;
+    this.jumpTimer = 0;
+    if (this.cursors.left.isDown) {
+      this.player.body.velocity.x = -150;
 
-    if(this.piteroids.countLiving() == 0) {
-      this.state.start('GameOver');
+      if (this.facing != 'left') {
+        this.player.animations.play('left');
+        this.facing = 'left';
+      }
     }
+    else if (this.cursors.right.isDown) {
+      this.player.body.velocity.x = 150;
+
+      if (this.facing != 'right') {
+        this.player.animations.play('right');
+        this.facing = 'right';
+      }
+    }
+    else {
+      if (this.facing != 'idle') {
+        this.player.animations.stop();
+
+        if (this.facing == 'left') {
+          this.player.frame = 0;
+        }
+        else {
+          this.player.frame = 5;
+        }
+
+        this.facing = 'idle';
+      }
+    }
+
+    if (this.jumpButton.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer) {
+      this.player.body.velocity.y = -250;
+      this.jumpTimer = game.time.now + 750;
+    }
+
   }
 
-  piteroidHit (bullet, piteroid) {    
-    bullet.kill();
-    piteroid.kill();    
-  }
 
-  resize() {
-    this.header.x = this.world.centerX;
-    this.header.y = 40;
+  render() { 
+    game.debug.text(game.time.suggestedFps, 32, 32);
   }
-
-  render () {}
 }
