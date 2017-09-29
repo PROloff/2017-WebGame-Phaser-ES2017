@@ -21,4 +21,3 @@ export default class extends Phaser.State {
     this.gameOver.y = this.world.centerY;
   }
 }
-//testkommentar
