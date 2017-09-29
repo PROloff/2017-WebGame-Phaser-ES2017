@@ -3,83 +3,74 @@ import Piteroid from '../sprites/Piteroid';
 import Ship from '../sprites/Ship';
 
 export default class extends Phaser.State {
-  init () {}
-  preload () {}
+  init() { }
+  preload() { }
 
-  create () {
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-    
-        game.time.desiredFps = 30;
-    
-        bg = game.add.tileSprite(0, 0, 800, 600, 'background');
-    
-        game.physics.arcade.gravity.y = 250;
-    
-        player = game.add.sprite(32, 32, 'dude');
-        game.physics.enable(player, Phaser.Physics.ARCADE);
-    
-        player.body.bounce.y = 0.2;
-        player.body.collideWorldBounds = true;
-        player.body.setSize(20, 32, 5, 16);
-    
-        player.animations.add('left', [0, 1, 2, 3], 10, true);
-        player.animations.add('turn', [4], 20, true);
-        player.animations.add('right', [5, 6, 7, 8], 10, true);
-    
-        cursors = game.input.keyboard.createCursorKeys();
-        jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  create() {
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    this.game.time.desiredFps = 30;
+
+    this.bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+
+    this.game.physics.arcade.gravity.y = 250;
+
+    this.player = game.add.sprite(32, 32, 'dude');
+    this.game.physics.enable(player, Phaser.Physics.ARCADE);
+
+    this.player.body.bounce.y = 0.2;
+    this.player.body.collideWorldBounds = true;
+    this.player.body.setSize(20, 32, 5, 16);
+
+    this.player.animations.add('left', [0, 1, 2, 3], 10, true);
+    this.player.animations.add('turn', [4], 20, true);
+    this.player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    this.cursors = game.input.keyboard.createCursorKeys();
+    this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   }
 
   update() {
-        player.body.velocity.x = 0;
-    
-        if (cursors.left.isDown)
-        {
-            player.body.velocity.x = -150;
-    
-            if (facing != 'left')
-            {
-                player.animations.play('left');
-                facing = 'left';
-            }
+    this.player.body.velocity.x = 0;
+
+    if (cursors.left.isDown) {
+      this.player.body.velocity.x = -150;
+
+      if (facing != 'left') {
+        this.player.animations.play('left');
+        this.facing = 'left';
+      }
+    }
+    else if (cursors.right.isDown) {
+      this.player.body.velocity.x = 150;
+
+      if (facing != 'right') {
+        this.player.animations.play('right');
+        this.facing = 'right';
+      }
+    }
+    else {
+      if (facing != 'idle') {
+        this.player.animations.stop();
+
+        if (facing == 'left') {
+          this.player.frame = 0;
         }
-        else if (cursors.right.isDown)
-        {
-            player.body.velocity.x = 150;
-    
-            if (facing != 'right')
-            {
-                player.animations.play('right');
-                facing = 'right';
-            }
+        else {
+          this.player.frame = 5;
         }
-        else
-        {
-            if (facing != 'idle')
-            {
-                player.animations.stop();
-    
-                if (facing == 'left')
-                {
-                    player.frame = 0;
-                }
-                else
-                {
-                    player.frame = 5;
-                }
-    
-                facing = 'idle';
-            }
-        }
-        
-        if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer)
-        {
-            player.body.velocity.y = -250;
-            jumpTimer = game.time.now + 750;
-        }
-    
+
+        this.facing = 'idle';
+      }
+    }
+
+    if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+      this.player.body.velocity.y = -250;
+      this.jumpTimer = game.time.now + 750;
+    }
+
   }
 
 
-  render () {}
+  render() { }
 }

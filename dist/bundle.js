@@ -11002,7 +11002,7 @@ exports.default = _class;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11028,89 +11028,89 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _class = function (_Phaser$State) {
-    _inherits(_class, _Phaser$State);
+  _inherits(_class, _Phaser$State);
 
-    function _class() {
-        _classCallCheck(this, _class);
+  function _class() {
+    _classCallCheck(this, _class);
 
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'preload',
+    value: function preload() {}
+  }, {
+    key: 'create',
+    value: function create() {
+      this.game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
+
+      this.game.time.desiredFps = 30;
+
+      this.bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+
+      this.game.physics.arcade.gravity.y = 250;
+
+      this.player = game.add.sprite(32, 32, 'dude');
+      this.game.physics.enable(player, _phaserCe2.default.Physics.ARCADE);
+
+      this.player.body.bounce.y = 0.2;
+      this.player.body.collideWorldBounds = true;
+      this.player.body.setSize(20, 32, 5, 16);
+
+      this.player.animations.add('left', [0, 1, 2, 3], 10, true);
+      this.player.animations.add('turn', [4], 20, true);
+      this.player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+      this.cursors = game.input.keyboard.createCursorKeys();
+      this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
     }
+  }, {
+    key: 'update',
+    value: function update() {
+      this.player.body.velocity.x = 0;
 
-    _createClass(_class, [{
-        key: 'init',
-        value: function init() {}
-    }, {
-        key: 'preload',
-        value: function preload() {}
-    }, {
-        key: 'create',
-        value: function create() {
-            game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
+      if (cursors.left.isDown) {
+        this.player.body.velocity.x = -150;
 
-            game.time.desiredFps = 30;
-
-            bg = game.add.tileSprite(0, 0, 800, 600, 'background');
-
-            game.physics.arcade.gravity.y = 250;
-
-            player = game.add.sprite(32, 32, 'dude');
-            game.physics.enable(player, _phaserCe2.default.Physics.ARCADE);
-
-            player.body.bounce.y = 0.2;
-            player.body.collideWorldBounds = true;
-            player.body.setSize(20, 32, 5, 16);
-
-            player.animations.add('left', [0, 1, 2, 3], 10, true);
-            player.animations.add('turn', [4], 20, true);
-            player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-            cursors = game.input.keyboard.createCursorKeys();
-            jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
+        if (facing != 'left') {
+          this.player.animations.play('left');
+          this.facing = 'left';
         }
-    }, {
-        key: 'update',
-        value: function update() {
-            player.body.velocity.x = 0;
+      } else if (cursors.right.isDown) {
+        this.player.body.velocity.x = 150;
 
-            if (cursors.left.isDown) {
-                player.body.velocity.x = -150;
-
-                if (facing != 'left') {
-                    player.animations.play('left');
-                    facing = 'left';
-                }
-            } else if (cursors.right.isDown) {
-                player.body.velocity.x = 150;
-
-                if (facing != 'right') {
-                    player.animations.play('right');
-                    facing = 'right';
-                }
-            } else {
-                if (facing != 'idle') {
-                    player.animations.stop();
-
-                    if (facing == 'left') {
-                        player.frame = 0;
-                    } else {
-                        player.frame = 5;
-                    }
-
-                    facing = 'idle';
-                }
-            }
-
-            if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
-                player.body.velocity.y = -250;
-                jumpTimer = game.time.now + 750;
-            }
+        if (facing != 'right') {
+          this.player.animations.play('right');
+          this.facing = 'right';
         }
-    }, {
-        key: 'render',
-        value: function render() {}
-    }]);
+      } else {
+        if (facing != 'idle') {
+          this.player.animations.stop();
 
-    return _class;
+          if (facing == 'left') {
+            this.player.frame = 0;
+          } else {
+            this.player.frame = 5;
+          }
+
+          this.facing = 'idle';
+        }
+      }
+
+      if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+        this.player.body.velocity.y = -250;
+        this.jumpTimer = game.time.now + 750;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {}
+  }]);
+
+  return _class;
 }(_phaserCe2.default.State);
 
 exports.default = _class;
