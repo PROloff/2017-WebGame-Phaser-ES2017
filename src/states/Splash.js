@@ -11,10 +11,11 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
-    this.load.image('pit', 'assets/images/pit.png');
-    this.load.image('bullet', 'assets/images/bullet.png');
-    this.load.image('ship', 'assets/images/ship.png');
-    this.load.image('smoke', 'assets/images/smoke.png');
+   // this.load.image('pit', 'assets/images/pit.png');
+   // this.load.image('bullet', 'assets/images/bullet.png');
+   // this.load.image('ship', 'assets/images/ship.png');
+   // this.load.image('smoke', 'assets/images/smoke.png');
+    this.load.image('bullet1', 'assets/images/bullet(1)');
     this.load.spritesheet('dude','assets/images/dude.png', 32, 48);
     this.load.image('background', 'assets/images/background.jpg');
   }
@@ -23,3 +24,4 @@ export default class extends Phaser.State {
     this.state.start('Game');
   }
 }
+
