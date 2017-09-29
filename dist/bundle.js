@@ -11054,7 +11054,7 @@ var _class = function (_Phaser$State) {
       this.game.physics.arcade.gravity.y = 250;
 
       this.player = game.add.sprite(32, 32, 'dude');
-      this.game.physics.enable(player, _phaserCe2.default.Physics.ARCADE);
+      this.game.physics.enable(this.player, _phaserCe2.default.Physics.ARCADE);
 
       this.player.body.bounce.y = 0.2;
       this.player.body.collideWorldBounds = true;
@@ -11072,25 +11072,25 @@ var _class = function (_Phaser$State) {
     value: function update() {
       this.player.body.velocity.x = 0;
 
-      if (cursors.left.isDown) {
+      if (this.cursors.left.isDown) {
         this.player.body.velocity.x = -150;
 
-        if (facing != 'left') {
+        if (this.facing != 'left') {
           this.player.animations.play('left');
           this.facing = 'left';
         }
-      } else if (cursors.right.isDown) {
+      } else if (this.cursors.right.isDown) {
         this.player.body.velocity.x = 150;
 
-        if (facing != 'right') {
+        if (this.facing != 'right') {
           this.player.animations.play('right');
           this.facing = 'right';
         }
       } else {
-        if (facing != 'idle') {
+        if (this.facing != 'idle') {
           this.player.animations.stop();
 
-          if (facing == 'left') {
+          if (this.facing == 'left') {
             this.player.frame = 0;
           } else {
             this.player.frame = 5;
@@ -11100,7 +11100,7 @@ var _class = function (_Phaser$State) {
         }
       }
 
-      if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+      if (this.jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
         this.player.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
