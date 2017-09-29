@@ -208,6 +208,19 @@ g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<
 
 /***/ }),
 
+/***/ 31:
+/*!*************************************************************!*\
+  !*** ./node_modules/phaser-ce/build/custom/phaser-split.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 336);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 47)))
+
+/***/ }),
+
 /***/ 334:
 /*!*****************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/pixi.js ***!
@@ -106282,22 +106295,9 @@ process.umask = function() { return 0; };
 
 __webpack_require__(/*! pixi */125);
 __webpack_require__(/*! p2 */126);
-__webpack_require__(/*! phaser */42);
+__webpack_require__(/*! phaser */31);
 module.exports = __webpack_require__(/*! webfontloader */127);
 
-
-/***/ }),
-
-/***/ 42:
-/*!*************************************************************!*\
-  !*** ./node_modules/phaser-ce/build/custom/phaser-split.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 336);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 47)))
 
 /***/ }),
 
