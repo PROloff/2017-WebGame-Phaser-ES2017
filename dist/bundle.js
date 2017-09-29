@@ -10974,6 +10974,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bullet', 'assets/images/bullet.png');
       this.load.image('ship', 'assets/images/ship.png');
       this.load.image('smoke', 'assets/images/smoke.png');
+      this.load.image('dude', 'assets/images/dude.png');
     }
   }, {
     key: 'create',
@@ -11144,7 +11145,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-      this.gameOver = this.add.text(0, 40, 'ok');
+      this.gameOver = this.add.text(0, 40, 'Winner');
       this.gameOver.font = 'Bangers';
       this.gameOver.padding.set(10, 16);
       this.gameOver.fontSize = 100;
