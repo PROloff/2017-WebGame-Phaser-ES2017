@@ -11166,8 +11166,6 @@ var _class = function (_Phaser$State) {
 
   return _class;
 }(_phaserCe2.default.State);
-//testkommentar
-
 
 exports.default = _class;
 
