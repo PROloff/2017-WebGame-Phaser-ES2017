@@ -72,5 +72,7 @@ export default class extends Phaser.State {
   }
 
 
-  render() { }
+  render() { 
+    game.debug.text(game.time.suggestedFps, 32, 32);
+  }
 }
