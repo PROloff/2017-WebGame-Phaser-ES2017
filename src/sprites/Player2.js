@@ -20,6 +20,7 @@ export default class extends Phaser.Sprite {
     this.weaponsprite = new Phaser.Sprite(game, -30, 5, 'weapon2');
     this.weaponsprite.animations.add('left', [1], 1, true);
     this.weaponsprite.animations.add('right', [0], 1, true);
+    this.weaponsprite.animations.play('left');
     this.addChild(this.weaponsprite);
 
     this.addChild(this.playersprite);
@@ -38,6 +39,7 @@ export default class extends Phaser.Sprite {
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
+        this.weaponsprite.position.x = -30;
        
       }
     }
@@ -48,6 +50,7 @@ export default class extends Phaser.Sprite {
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 0;
         
       }
     }
