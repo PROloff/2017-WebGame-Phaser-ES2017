@@ -4340,7 +4340,7 @@ var _class = function (_Phaser$Sprite) {
 
         _this.angle = -90;
 
-        _this.weapon = game.add.weapon(40, 'bullet');
+        _this.weapon = new phaser.Weapon(40, 'bullet');
         _this.weapon.setBulletFrames(0, 80, true);
         _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
         _this.weapon.bulletSpeed = 400;
