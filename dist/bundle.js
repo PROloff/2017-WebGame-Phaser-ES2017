@@ -4335,7 +4335,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon = game.add.weapon(40, 'bullet1');
     _this.weapon.setBulletFrames(0, 80, true);
     _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
-    _this.weapon.bulletSpeed = 800;
+    _this.weapon.bulletSpeed = 500;
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 200;
 
