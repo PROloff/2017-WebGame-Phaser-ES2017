@@ -1,7 +1,11 @@
 import Phaser from 'phaser-ce';
 import Piteroid from '../sprites/Piteroid';
 import Player from '../sprites/Player';
+<<<<<<< HEAD
 import Weapon from '../sprites/Weapon';
+=======
+import Player2 from '../sprites/Player2';
+>>>>>>> 67e8690170df10981e3bc2dd888322f22aa38563
 
 export default class extends Phaser.State {
   init() { }
@@ -18,6 +22,8 @@ export default class extends Phaser.State {
 
     this.player = new Player (game);
     this.add.existing (this.player);
+    this.player2 = new Player2 (game);
+    this.add.existing (this.player2);
   }
 
   update() {
@@ -27,5 +33,5 @@ export default class extends Phaser.State {
   render() { 
     game.debug.text(game.time.suggestedFps, 32, 32);
   }
-}//test
-//test2
+}
+
