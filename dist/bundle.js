@@ -4268,6 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletSpeed = 500;
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 200;
+    _this.weapon.fireAngle = 0;
 
     _this.weapon.trackSprite(parent, 0, 0, true);
 
@@ -11057,6 +11058,7 @@ var _class = function (_Phaser$Sprite) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
+
       if (this.cursors.fire.isDown) {
         this.weapon.fire();
       }

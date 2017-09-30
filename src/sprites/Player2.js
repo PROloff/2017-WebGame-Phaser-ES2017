@@ -63,9 +63,10 @@ export default class extends Phaser.Sprite {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }
-    if (this.cursors.fire.isDown){
+
+    if (this.cursors.fire.isDown)
+    {
       this.weapon.fire();
     }
-
   }
 }
