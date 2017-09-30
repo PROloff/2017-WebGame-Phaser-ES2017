@@ -4422,7 +4422,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
+module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
 
 
 /***/ }),
@@ -10970,10 +10970,10 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
-      // this.load.image('pit', 'assets/images/pit.png');
-      // this.load.image('bullet', 'assets/images/bullet.png');
-      // this.load.image('ship', 'assets/images/ship.png');
-      // this.load.image('smoke', 'assets/images/smoke.png');
+      //this.load.image('pit', 'assets/images/pit.png');
+      //this.load.image('bullet', 'assets/images/bullet.png');
+      //this.load.image('ship', 'assets/images/ship.png');
+      //this.load.image('smoke', 'assets/images/smoke.png');
       this.load.image('bullet1', 'assets/images/bullet(1)');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
@@ -11016,9 +11016,9 @@ var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 128);
 
 var _Piteroid2 = _interopRequireDefault(_Piteroid);
 
-var _Ship = __webpack_require__(/*! ../sprites/Ship */ 129);
+var _Player = __webpack_require__(/*! ../sprites/Player */ 343);
 
-var _Ship2 = _interopRequireDefault(_Ship);
+var _Player2 = _interopRequireDefault(_Player);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11054,58 +11054,12 @@ var _class = function (_Phaser$State) {
 
       this.game.physics.arcade.gravity.y = 250;
 
-      this.player = game.add.sprite(32, 32, 'dude');
-      this.game.physics.enable(this.player, _phaserCe2.default.Physics.ARCADE);
-
-      this.player.body.bounce.y = 0.2;
-      this.player.body.collideWorldBounds = true;
-      this.player.body.setSize(20, 32, 5, 16);
-
-      this.player.animations.add('left', [0, 1, 2, 3], 10, true);
-      this.player.animations.add('turn', [4], 20, true);
-      this.player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-      this.cursors = game.input.keyboard.createCursorKeys();
-      this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
+      this.player = new _Player2.default(game);
+      this.add(this.player);
     }
   }, {
     key: 'update',
-    value: function update() {
-      this.player.body.velocity.x = 0;
-      this.jumpTimer = 0;
-      if (this.cursors.left.isDown) {
-        this.player.body.velocity.x = -150;
-
-        if (this.facing != 'left') {
-          this.player.animations.play('left');
-          this.facing = 'left';
-        }
-      } else if (this.cursors.right.isDown) {
-        this.player.body.velocity.x = 150;
-
-        if (this.facing != 'right') {
-          this.player.animations.play('right');
-          this.facing = 'right';
-        }
-      } else {
-        if (this.facing != 'idle') {
-          this.player.animations.stop();
-
-          if (this.facing == 'left') {
-            this.player.frame = 0;
-          } else {
-            this.player.frame = 5;
-          }
-
-          this.facing = 'idle';
-        }
-      }
-
-      if (this.jumpButton.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.player.body.velocity.y = -250;
-        this.jumpTimer = game.time.now + 750;
-      }
-    }
+    value: function update() {}
   }, {
     key: 'render',
     value: function render() {
@@ -11190,6 +11144,19 @@ var _class = function (_Phaser$State) {
 }(_phaserCe2.default.State);
 
 exports.default = _class;
+
+/***/ }),
+/* 342 */,
+/* 343 */
+/*!*******************************!*\
+  !*** ./src/sprites/Player.js ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /***/ })
 ],[130]);
