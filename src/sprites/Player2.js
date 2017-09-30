@@ -51,7 +51,6 @@ export default class extends Phaser.Sprite {
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 0;
-        
       }
     }
     else {
