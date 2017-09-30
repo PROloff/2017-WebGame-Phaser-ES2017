@@ -4330,15 +4330,13 @@ var _class = function (_Phaser$Sprite) {
   function _class(game, parent) {
     _classCallCheck(this, _class);
 
-    //this.bulletGravity.y=0 ;
-
-
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bullet1'));
 
     _this.weapon = game.add.weapon(40, 'bullet1');
     _this.weapon.setBulletFrames(0, 80, true);
     _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
-    _this.weapon.bulletSpeed = 400;
+    _this.weapon.bulletSpeed = 800;
+    _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 200;
 
     _this.weapon.trackSprite(parent, 0, 0, true);
