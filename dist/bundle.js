@@ -10942,9 +10942,14 @@ var _class = function (_Phaser$State) {
 
       this.game.physics.arcade.gravity.y = 250;
 
-      this.player = new _Player2.default(game);
+      var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D });
+      this.player = new _Player4.default(game, 'dude', player1keys);
+      this.player.position = new _phaserCe2.default.Point(100, 0);
       this.add.existing(this.player);
-      this.player2 = new _Player4.default(game);
+
+      var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT });
+      this.player2 = new _Player4.default(game, 'dude2', player2keys);
+      this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
       this.add.existing(this.player2);
     }
   }, {
@@ -10998,7 +11003,7 @@ var _class = function (_Phaser$Sprite) {
   function _class(game) {
     _classCallCheck(this, _class);
 
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, window.innerWidth - 100, 0, 'dude'));
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, window.innerWidth - 100, 0));
 
     _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
 
@@ -11094,10 +11099,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Phaser$Sprite) {
   _inherits(_class, _Phaser$Sprite);
 
-  function _class(game) {
+  function _class(game, spritekey, cursors) {
     _classCallCheck(this, _class);
 
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0, 'dude2'));
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
 
     _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
 
@@ -11105,13 +11110,14 @@ var _class = function (_Phaser$Sprite) {
     _this.body.collideWorldBounds = true;
     _this.body.setSize(20, 32, 5, 16);
 
-    _this.animations.add('left', [0, 1, 2, 3], 10, true);
-    _this.animations.add('turn', [4], 20, true);
-    _this.animations.add('right', [5, 6, 7, 8], 10, true);
-
-    _this.cursors = game.input.keyboard.createCursorKeys();
+    _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
+    _this.playersprite.animations.add('left', [0, 1, 2, 3], 10, true);
+    _this.playersprite.animations.add('turn', [4], 20, true);
+    _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
+    _this.cursors = cursors;
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
     _this.addChild(_this.weaponsprite);
+    _this.addChild(_this.playersprite);
     return _this;
   }
 
@@ -11120,23 +11126,23 @@ var _class = function (_Phaser$Sprite) {
     value: function update() {
       this.body.velocity.x = 0;
       this.jumpTimer = 0;
-      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.A)) {
+      if (this.cursors.left.isDown) {
         this.body.velocity.x = -150;
 
         if (this.facing != 'left') {
-          this.animations.play('left');
+          this.playersprite.animations.play('left');
           this.facing = 'left';
         }
-      } else if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.D)) {
+      } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
 
         if (this.facing != 'right') {
-          this.animations.play('right');
+          this.playersprite.animations.play('right');
           this.facing = 'right';
         }
       } else {
         if (this.facing != 'idle') {
-          this.animations.stop();
+          this.playersprite.animations.stop();
 
           if (this.facing == 'left') {
             this.frame = 0;
@@ -11148,7 +11154,7 @@ var _class = function (_Phaser$Sprite) {
         }
       }
 
-      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.W) && this.body.onFloor() && game.time.now > this.jumpTimer) {
+      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
