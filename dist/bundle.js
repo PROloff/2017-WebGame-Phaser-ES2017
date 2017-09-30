@@ -10790,7 +10790,7 @@ var _class = function (_Phaser$State) {
       this.load.image('Tileset1', 'assets/map/strasse.png');
       this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
       this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
+      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
       this.load.image('Red', 'assets/images/RedWinsnew.png');
       this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
@@ -11053,9 +11053,9 @@ var _class = function (_Phaser$Sprite) {
     _this.body.setSize(30, 55, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
+    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
     _this.playersprite.animations.add('idleL', [6], 10, true);
-    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
+    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
     _this.playersprite.animations.add('idleR', [7], 10, true);
     _this.cursors = cursors;
 

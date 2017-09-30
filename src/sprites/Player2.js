@@ -12,9 +12,9 @@ export default class extends Phaser.Sprite {
     this.body.setSize(30, 55, 20, 10);
 
     this.playersprite = new Phaser.Sprite(game, 0, 0, spritekey);
-    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
+    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
     this.playersprite.animations.add('idleL', [6], 10, true);
-    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
+    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
     this.playersprite.animations.add('idleR', [7], 10, true);
     this.cursors = cursors;
 
