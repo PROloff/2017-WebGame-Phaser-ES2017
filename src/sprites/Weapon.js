@@ -4,7 +4,7 @@ export default class extends Phaser.Sprite {
   constructor ( game, parent) {
     super(game, 0, 0, 'bullet1');
     
-   this.bulletGravity = new Phaser.Point(0,0);
+   this.bulletGravity.y=0 ;
     
     
 

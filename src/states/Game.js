@@ -1,11 +1,8 @@
 import Phaser from 'phaser-ce';
 import Piteroid from '../sprites/Piteroid';
 import Player from '../sprites/Player';
-<<<<<<< HEAD
 import Weapon from '../sprites/Weapon';
-=======
 import Player2 from '../sprites/Player2';
->>>>>>> 67e8690170df10981e3bc2dd888322f22aa38563
 
 export default class extends Phaser.State {
   init() { }
