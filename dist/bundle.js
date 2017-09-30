@@ -11051,8 +11051,9 @@ var _class = function (_Phaser$Sprite) {
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-    _this.playersprite.animations.add('turn', [6], 20, true);
     _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
+    _this.playersprite.animations.add('idleLeft', [6], true);
+    _this.playersprite.animations.add('idleRight', [7], true);
     _this.cursors = cursors;
 
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
@@ -11077,29 +11078,32 @@ var _class = function (_Phaser$Sprite) {
       if (this.cursors.left.isDown) {
         this.body.velocity.x = -150;
 
-        if (this.facing != 'left') {
-          this.playersprite.animations.play('left');
-          this.facing = 'left';
-          this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = -20;
-        }
+        //if (this.facing != 'left') {
+        this.playersprite.animations.play('left');
+        this.facing = 'left';
+        this.weaponsprite.animations.play('left');
+        this.weaponsprite.position.x = -20;
+
+        //   }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
 
-        if (this.facing != 'right') {
-          this.playersprite.animations.play('right');
-          this.facing = 'right';
-          this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 20;
-        }
+        // if (this.facing != 'right') {
+        this.playersprite.animations.play('right');
+        this.facing = 'right';
+        this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 20;
+        //  }
       } else {
         if (this.facing != 'idle') {
-          this.playersprite.animations.stop();
+          //this.playersprite.animations.stop();
 
           if (this.facing == 'left') {
             this.frame = 0;
+            this.playersprite.animations.play('idleLeft');
           } else {
             this.frame = 5;
+            this.playersprite.animations.play('idleRight');
           }
         }
       }
