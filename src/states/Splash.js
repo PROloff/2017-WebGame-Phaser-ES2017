@@ -14,6 +14,7 @@ export default class extends Phaser.State {
     this.load.image('bulletR', 'assets/images/bulletRot.png');
     this.load.image('bulletB', 'assets/images/bulletBlau.png');
     this.load.spritesheet('dude','assets/images/dude.png', 32, 48);
+    this.load.image('background', 'assets/images/Hintergrund1.png');
     this.load.image('background', 'assets/images/background.jpg');
     this.load.tilemap('testmap', 'assets/map/Testmap.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('Tileset1', 'assets/map/ts900000.png')
