@@ -18,23 +18,8 @@ export default class extends Phaser.Sprite {
 
     this.cursors = game.input.keyboard.createCursorKeys();
 
-
-    this.weapon = game.add.weapon(40, 'bullet1');      
-    this.weapon.setBulletFrames(0, 80, true);    
-    this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-    this.weapon.bulletSpeed = 400;
-    this.weapon.fireRate = 200;
-
-    this.weapon.trackSprite(this, 0, 0, true);
-
-    this.cursors = this.game.input.keyboard.createCursorKeys();
-    
-    this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-    
-  }
-  get bullets (){
-    return this.weapon.bullets;
-  }
+    this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.ENTER);
+   
 
   update() {
     this.body.velocity.x = 0;
@@ -74,9 +59,10 @@ export default class extends Phaser.Sprite {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }
+    
     if (this.fireButton.isDown)
     {
-        this.weapon.fire();
+       weapon = new Weapon(this.game);
     }
 
   }
