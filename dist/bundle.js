@@ -10855,7 +10855,8 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
-      this.load.image('bullet1', 'assets/images/bullet (1).png');
+      this.load.image('bulletR', 'assets/images/bulletRot.png');
+      this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
       this.load.tilemap('testmap', 'assets/map/Testmap.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
