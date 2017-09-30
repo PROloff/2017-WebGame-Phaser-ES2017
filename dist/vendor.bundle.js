@@ -7802,6 +7802,7 @@ PIXI.TextureUvs = function()
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 335:
 /*!***************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/p2.js ***!
@@ -29012,6 +29013,8 @@ PIXI.TextureUvs = function()
 
 /***/ }),
 
+=======
+>>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
 /***/ 334:
 /*!***************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/p2.js ***!

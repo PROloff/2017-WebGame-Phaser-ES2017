@@ -4303,9 +4303,9 @@ exports.default = _class;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! babel-polyfill */130);
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
+<<<<<<< HEAD
 =======
 __webpack_require__(/*! babel-polyfill */131);
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
@@ -4316,6 +4316,8 @@ module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Ga
 >>>>>>> 2deae8e5841d5bfd85d50af8f235795140e322db
 >>>>>>> 1f9103aad2422f7794468f091c2960d3d1b67e7e
 >>>>>>> 595a0b2be1153e68a34483b0fcf035795d649699
+=======
+>>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
 
 
 /***/ }),
@@ -10961,7 +10963,9 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
-}(_phaserCe2.default.State);
+}(_phaserCe2.default.State); //test
+//test2
+
 
 exports.default = _class;
 
@@ -11014,7 +11018,8 @@ var _class = function (_Phaser$Sprite) {
     _this.animations.add('right', [5, 6, 7, 8], 10, true);
 
     _this.cursors = game.input.keyboard.createCursorKeys();
-    _this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+    _this.addChild(_this.weaponsprite);
     return _this;
   }
 
@@ -11051,7 +11056,7 @@ var _class = function (_Phaser$Sprite) {
         }
       }
 
-      if (this.jumpButton.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
@@ -11059,14 +11064,16 @@ var _class = function (_Phaser$Sprite) {
   }]);
 
   return _class;
-<<<<<<< HEAD
 }(_phaserCe2.default.Sprite);
+<<<<<<< HEAD
 =======
 }(_phaserCe2.default.State); //test
 //test2
 //test 3
 
 >>>>>>> 1f9103aad2422f7794468f091c2960d3d1b67e7e
+=======
+>>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
 
 exports.default = _class;
 
