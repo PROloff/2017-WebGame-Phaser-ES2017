@@ -10859,9 +10859,8 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/Hintergrund1.png');
-      //this.load.image('background', 'assets/images/background.jpg');
-      this.load.tilemap('testmap', 'assets/map/Testmap.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/ts900000.png');
+      this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/retro.png');
       this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
@@ -10940,7 +10939,7 @@ var _class = function (_Phaser$State) {
 
       this.game.time.desiredFps = 30;
 
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Hintergrund1');
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
       this.game.physics.arcade.gravity.y = 250;
 
@@ -10953,7 +10952,7 @@ var _class = function (_Phaser$State) {
       this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
       this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
       this.add.existing(this.player2);
-      this.map = game.add.tilemap("testmap");
+      this.map = game.add.tilemap("map");
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
       this.layer = this.map.createLayer("Kachelebene 1");
