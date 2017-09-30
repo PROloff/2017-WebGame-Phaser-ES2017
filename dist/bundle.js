@@ -4293,17 +4293,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /* 126 */,
 /* 127 */,
 /* 128 */,
-/* 129 */
-/*!*********************************!*\
-  !*** ./src/sprites/Piteroid.js ***!
-  \*********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\schueler.S9-NEU\\Desktop\\Jump-n-Gun\\src\\sprites\\Piteroid.js'\n    at Error (native)");
-
-/***/ }),
+/* 129 */,
 /* 130 */
 /*!******************************************!*\
   !*** multi babel-polyfill ./src/Game.js ***!
@@ -10901,21 +10891,13 @@ var _phaserCe = __webpack_require__(/*! phaser-ce */ 21);
 
 var _phaserCe2 = _interopRequireDefault(_phaserCe);
 
-var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 129);
-
-var _Piteroid2 = _interopRequireDefault(_Piteroid);
-
-var _Player = __webpack_require__(/*! ../sprites/Player */ 341);
-
-var _Player2 = _interopRequireDefault(_Player);
-
 var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 91);
 
 var _Weapon2 = _interopRequireDefault(_Weapon);
 
-var _Player3 = __webpack_require__(/*! ../sprites/Player2 */ 342);
+var _Player = __webpack_require__(/*! ../sprites/Player2 */ 342);
 
-var _Player4 = _interopRequireDefault(_Player3);
+var _Player2 = _interopRequireDefault(_Player);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10953,12 +10935,12 @@ var _class = function (_Phaser$State) {
             this.game.physics.arcade.gravity.y = 250;
 
             var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
-            this.player = new _Player4.default(game, 'dude', player1keys);
+            this.player = new _Player2.default(game, 'dude', player1keys);
             this.player.position = new _phaserCe2.default.Point(100, 0);
             this.add.existing(this.player);
 
             var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT, 'fire': _phaserCe2.default.KeyCode.ENTER });
-            this.player2 = new _Player4.default(game, 'dude2', player2keys);
+            this.player2 = new _Player2.default(game, 'dude2', player2keys);
             this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
             this.add.existing(this.player2);
         }
@@ -10978,17 +10960,7 @@ var _class = function (_Phaser$State) {
 exports.default = _class;
 
 /***/ }),
-/* 341 */
-/*!*******************************!*\
-  !*** ./src/sprites/Player.js ***!
-  \*******************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\schueler.S9-NEU\\Desktop\\Jump-n-Gun\\src\\sprites\\Player.js'\n    at Error (native)");
-
-/***/ }),
+/* 341 */,
 /* 342 */
 /*!********************************!*\
   !*** ./src/sprites/Player2.js ***!
@@ -11041,6 +11013,7 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('turn', [4], 20, true);
     _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     _this.cursors = cursors;
+
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
     _this.addChild(_this.weaponsprite);
     _this.addChild(_this.playersprite);
@@ -11119,14 +11092,6 @@ var _phaserCe = __webpack_require__(/*! phaser-ce */ 21);
 
 var _phaserCe2 = _interopRequireDefault(_phaserCe);
 
-var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 129);
-
-var _Piteroid2 = _interopRequireDefault(_Piteroid);
-
-var _Ship = __webpack_require__(/*! ../sprites/Ship */ 344);
-
-var _Ship2 = _interopRequireDefault(_Ship);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11169,18 +11134,6 @@ var _class = function (_Phaser$State) {
 }(_phaserCe2.default.State);
 
 exports.default = _class;
-
-/***/ }),
-/* 344 */
-/*!*****************************!*\
-  !*** ./src/sprites/Ship.js ***!
-  \*****************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-"use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\schueler.S9-NEU\\Desktop\\Jump-n-Gun\\src\\sprites\\Ship.js'\n    at Error (native)");
 
 /***/ })
 ],[130]);

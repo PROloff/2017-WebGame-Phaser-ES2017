@@ -16,6 +16,7 @@ export default class extends Phaser.Sprite {
     this.playersprite.animations.add('turn', [4], 20, true);
     this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     this.cursors = cursors;
+    
     this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
     this.addChild(this.weaponsprite);
     this.addChild(this.playersprite);
