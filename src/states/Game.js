@@ -1,6 +1,7 @@
 import Phaser from 'phaser-ce';
 import Piteroid from '../sprites/Piteroid';
 import Player from '../sprites/Player';
+import Player2 from '../sprites/Player2';
 
 export default class extends Phaser.State {
   init() { }
