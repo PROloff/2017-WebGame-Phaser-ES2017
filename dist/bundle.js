@@ -11017,10 +11017,12 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, 5, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
+    _this.weaponsprite.animations.play('left');
     _this.addChild(_this.weaponsprite);
+
     _this.addChild(_this.playersprite);
 
     _this.weapon = new _Weapon2.default(_this.game, _this);
@@ -11039,6 +11041,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('left');
           this.facing = 'left';
           this.weaponsprite.animations.play('left');
+          this.weaponsprite.position.x = -30;
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11047,6 +11050,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('right');
           this.facing = 'right';
           this.weaponsprite.animations.play('right');
+          this.weaponsprite.position.x = 0;
         }
       } else {
         if (this.facing != 'idle') {
