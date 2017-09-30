@@ -7,7 +7,7 @@ export default class extends Phaser.Sprite {
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     
 
-    this.body.bounce.y = 0.2;
+    this.body.bounce.y = 0.1;
     this.body.collideWorldBounds = true;
     this.body.setSize(20, 32, 5, 16);
 
@@ -71,7 +71,7 @@ export default class extends Phaser.Sprite {
     }
 
     if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-      this.body.velocity.y = -250;
+      this.body.velocity.y = -300;
       this.jumpTimer = game.time.now + 750;
     }
 

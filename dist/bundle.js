@@ -10962,8 +10962,19 @@ var _class = function (_Phaser$State) {
   }, {
     key: 'update',
     value: function update() {
+      game.physics.arcade.collide(this.player, this.layer);
+      game.physics.arcade.collide(this.player2, this.layer);
+
       game.physics.arcade.collide(this.player, this.player2.bullets, this.collisionHandeler1, null, this);
       game.physics.arcade.collide(this.player2, this.player.bullets, this.collisionHandeler2, null, this);
+
+      game.physics.arcade.collide(this.player.bullets, this.layer, this.bullet, null, this);
+      game.physics.arcade.collide(this.player2.bullets, this.layer, this.bullet, null, this);
+    }
+  }, {
+    key: 'bullet',
+    value: function bullet(_bullet) {
+      _bullet.kill();
     }
   }, {
     key: 'collisionHandeler1',
@@ -11031,7 +11042,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
 
-    _this.body.bounce.y = 0.2;
+    _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
     _this.body.setSize(20, 32, 5, 16);
 
@@ -11089,7 +11100,7 @@ var _class = function (_Phaser$Sprite) {
       }
 
       if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.body.velocity.y = -250;
+        this.body.velocity.y = -300;
         this.jumpTimer = game.time.now + 750;
       }
 
