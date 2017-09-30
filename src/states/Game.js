@@ -12,9 +12,9 @@ export default class extends Phaser.State {
 
     this.game.time.desiredFps = 30;
 
-    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Hintergrund1');
 
-    this.game.physics.arcade.gravity.y = 1000;
+    this.game.physics.arcade.gravity.y = 250;
 
     var player1keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.W, 'left' : Phaser.KeyCode.A, 'right' : Phaser.KeyCode.D, 'fire' : Phaser.KeyCode.SPACEBAR})
     this.player = new Player2 (game, 'dude', player1keys, 'bulletR');

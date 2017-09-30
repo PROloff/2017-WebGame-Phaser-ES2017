@@ -10859,7 +10859,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.image('background', 'assets/images/background.jpg');
+      //this.load.image('background', 'assets/images/background.jpg');
       this.load.tilemap('testmap', 'assets/map/Testmap.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/ts900000.png');
       this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
@@ -10940,9 +10940,9 @@ var _class = function (_Phaser$State) {
 
       this.game.time.desiredFps = 30;
 
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Hintergrund1');
 
-      this.game.physics.arcade.gravity.y = 1000;
+      this.game.physics.arcade.gravity.y = 250;
 
       var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
       this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
