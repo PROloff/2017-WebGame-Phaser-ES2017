@@ -11064,8 +11064,6 @@ var _class = function (_Phaser$Sprite) {
           } else {
             this.frame = 5;
           }
-
-          this.facing = 'idle';
         }
       }
 

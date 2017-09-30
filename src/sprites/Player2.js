@@ -65,7 +65,7 @@ export default class extends Phaser.Sprite {
           this.frame = 5;
         }
 
-        this.facing = 'idle';
+       
       }
     }
 
