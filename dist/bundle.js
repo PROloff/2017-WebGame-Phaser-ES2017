@@ -4422,7 +4422,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
+module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */333);
 
 
 /***/ }),
