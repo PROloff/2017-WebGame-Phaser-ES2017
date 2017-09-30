@@ -9,7 +9,7 @@ export default class extends Phaser.Sprite {
 
     this.body.bounce.y = 0.1;
     this.body.collideWorldBounds = true;
-    this.body.setSize(40, 85, 45, 40);
+    this.body.setSize(30, 55, 20, 10);
 
     this.playersprite = new Phaser.Sprite(game, 0, 0, spritekey);
     this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);

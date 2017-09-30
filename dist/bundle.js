@@ -10993,7 +10993,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       game.debug.text(game.time.suggestedFps, 32, 32);
-      //game.debug.body(this.player);
+      game.debug.body(this.player);
     }
   }]);
 
@@ -11048,7 +11048,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(40, 85, 45, 40);
+    _this.body.setSize(30, 55, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
