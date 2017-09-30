@@ -31,9 +31,5 @@ export default class extends Phaser.Sprite {
       this.weapon.fire();
     }
     this.weapon.fire ();
-    
-   
-    
-    
-  }
+  }//test
 }
