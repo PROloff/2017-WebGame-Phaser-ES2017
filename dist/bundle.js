@@ -10865,7 +10865,8 @@ var _class = function (_Phaser$State) {
       this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
-      this.load.image('gameover', 'assets/images/gameover.png');
+      this.load.image('Blue', 'assets/images/BlueWins.png');
+      this.load.image('Red', 'assets/images/RedWins.png');
     }
   }, {
     key: 'create',
@@ -10980,12 +10981,12 @@ var _class = function (_Phaser$State) {
   }, {
     key: 'collisionHandeler1',
     value: function collisionHandeler1(obj1, obj2) {
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
     }
   }, {
     key: 'collisionHandeler2',
     value: function collisionHandeler2(obj1, obj2) {
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
     }
   }, {
     key: 'render',
