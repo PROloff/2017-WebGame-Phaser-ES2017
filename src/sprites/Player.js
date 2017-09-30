@@ -15,6 +15,17 @@ export default class extends Phaser.Sprite {
 
     this.cursors = game.input.keyboard.createCursorKeys();
     this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    this.weapon = game.add.weapon(40, 'bullet');      
+    this.weapon.setBulletFrames(0, 80, true);    
+    this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+    this.weapon.bulletSpeed = 400;
+    this.weapon.fireRate = 200;
+
+    this.weapon.trackSprite(this, 0, 0, true);
+    this.cursors = this.game.input.keyboard.createCursorKeys();
+    
+        this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
   }
 
   update() {
