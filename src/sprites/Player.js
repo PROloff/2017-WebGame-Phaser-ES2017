@@ -14,7 +14,8 @@ export default class extends Phaser.Sprite {
     this.animations.add('right', [5, 6, 7, 8], 10, true);
 
     this.cursors = game.input.keyboard.createCursorKeys();
-    this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
+    this.addChild(this.weaponsprite);
   }
 
   update() {
@@ -51,7 +52,7 @@ export default class extends Phaser.Sprite {
       }
     }
 
-    if (this.jumpButton.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+    if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }
