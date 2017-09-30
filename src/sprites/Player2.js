@@ -2,12 +2,12 @@ import Phaser from 'phaser-ce';
 import Weapon from './Weapon';
 
 export default class extends Phaser.Sprite {
-  constructor ( game, spritekey, cursors ) {
+  constructor ( game, spritekey, cursors, bullet) {
     super(game, 100, 0);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     
 
-    this.body.bounce.y = 0.2;
+    this.body.bounce.y = 0.1;
     this.body.collideWorldBounds = true;
     this.body.setSize(20, 32, 5, 16);
 
@@ -26,7 +26,11 @@ export default class extends Phaser.Sprite {
     this.addChild(this.playersprite);
 
     
-    this.weapon = new Weapon(this.game, this);
+    this.weapon = new Weapon(this.game, this, bullet);
+  }
+  
+  get bullets (){
+    return this.weapon.bullets;
   }
 
   update() {
@@ -51,7 +55,6 @@ export default class extends Phaser.Sprite {
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 0;
-        
       }
     }
     else {
@@ -64,18 +67,17 @@ export default class extends Phaser.Sprite {
         else {
           this.frame = 5;
         }
-
-        this.facing = 'idle';
       }
     }
 
     if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-      this.body.velocity.y = -250;
+      this.body.velocity.y = -350;
       this.jumpTimer = game.time.now + 750;
     }
-    if (this.cursors.fire.isDown){
-      this.weapon.fire();
-    }
 
+    if (this.cursors.fire.isDown)
+    {
+      this.weapon.fire(this.facing);
+    }
   }
 }
