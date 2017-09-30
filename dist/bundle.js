@@ -10941,7 +10941,7 @@ var _class = function (_Phaser$State) {
 
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
-      this.game.physics.arcade.gravity.y = 250;
+      this.game.physics.arcade.gravity.y = 1000;
 
       var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
       this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
