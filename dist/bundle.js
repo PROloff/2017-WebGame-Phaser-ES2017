@@ -10857,12 +10857,12 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
+      this.load.spritesheet('dude', 'assets/images/dudeRot.png', 128, 128);
       this.load.image('background', 'assets/images/Hintergrund1.png');
       this.load.image('background', 'assets/images/background.jpg');
       this.load.tilemap('testmap', 'assets/map/Testmap.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/ts900000.png');
-      this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau.png', 128, 128);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
@@ -10992,6 +10992,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       game.debug.text(game.time.suggestedFps, 32, 32);
+      //game.debug.body(this.player);
     }
   }]);
 
@@ -11046,12 +11047,12 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(20, 32, 5, 16);
+    _this.body.setSize(40, 85, 45, 40);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [0, 1, 2, 3], 10, true);
-    _this.playersprite.animations.add('turn', [4], 20, true);
-    _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
+    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
+    _this.playersprite.animations.add('turn', [6], 20, true);
+    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     _this.cursors = cursors;
 
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, 5, 'weapon2');
