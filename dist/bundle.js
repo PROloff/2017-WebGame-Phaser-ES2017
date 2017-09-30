@@ -10903,6 +10903,10 @@ var _Player = __webpack_require__(/*! ../sprites/Player */ 340);
 
 var _Player2 = _interopRequireDefault(_Player);
 
+var _Player3 = __webpack_require__(/*! ../sprites/Player2 */ 344);
+
+var _Player4 = _interopRequireDefault(_Player3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10939,7 +10943,7 @@ var _class = function (_Phaser$State) {
 
       this.player = new _Player2.default(game);
       this.add.existing(this.player);
-      this.player2 = new Player2(game);
+      this.player2 = new _Player4.default(game);
       this.add.existing(this.player2);
     }
   }, {
@@ -10993,7 +10997,7 @@ var _class = function (_Phaser$Sprite) {
   function _class(game) {
     _classCallCheck(this, _class);
 
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'dude'));
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0, 'dude'));
 
     _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
 
@@ -11243,6 +11247,106 @@ var _class = function (_Phaser$Sprite) {
     }]);
 
     return _class;
+}(_phaserCe2.default.Sprite);
+
+exports.default = _class;
+
+/***/ }),
+/* 343 */,
+/* 344 */
+/*!********************************!*\
+  !*** ./src/sprites/Player2.js ***!
+  \********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 29);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, window.innerWidth - 100, 0, 'dude2'));
+
+    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
+
+    _this.body.bounce.y = 0.2;
+    _this.body.collideWorldBounds = true;
+    _this.body.setSize(20, 32, 5, 16);
+
+    _this.animations.add('left', [0, 1, 2, 3], 10, true);
+    _this.animations.add('turn', [4], 20, true);
+    _this.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    _this.cursors = game.input.keyboard.createCursorKeys();
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+    _this.addChild(_this.weaponsprite);
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'update',
+    value: function update() {
+      this.body.velocity.x = 0;
+      this.jumpTimer = 0;
+      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.A)) {
+        this.body.velocity.x = -150;
+
+        if (this.facing != 'left') {
+          this.animations.play('left');
+          this.facing = 'left';
+        }
+      } else if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.D)) {
+        this.body.velocity.x = 150;
+
+        if (this.facing != 'right') {
+          this.animations.play('right');
+          this.facing = 'right';
+        }
+      } else {
+        if (this.facing != 'idle') {
+          this.animations.stop();
+
+          if (this.facing == 'left') {
+            this.frame = 0;
+          } else {
+            this.frame = 5;
+          }
+
+          this.facing = 'idle';
+        }
+      }
+
+      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.W) && this.body.onFloor() && game.time.now > this.jumpTimer) {
+        this.body.velocity.y = -250;
+        this.jumpTimer = game.time.now + 750;
+      }
+    }
+  }]);
+
+  return _class;
 }(_phaserCe2.default.Sprite);
 
 exports.default = _class;

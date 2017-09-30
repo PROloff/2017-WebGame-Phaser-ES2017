@@ -2,7 +2,7 @@ import Phaser from 'phaser-ce';
 
 export default class extends Phaser.Sprite {
   constructor ( game ) {
-    super(game, 100, 0, 'dude2');
+    super(game, window.innerWidth-100, 0, 'dude2');
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
     this.body.bounce.y = 0.2;
