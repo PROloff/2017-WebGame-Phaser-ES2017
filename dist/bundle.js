@@ -4268,7 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 5, 30, true);
+    _this.weapon.trackSprite(parent, 60, 70, true);
 
     return _this;
   }
@@ -11055,7 +11055,7 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, 5, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 15, 40, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11079,7 +11079,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('left');
           this.facing = 'left';
           this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = -30;
+          this.weaponsprite.position.x = 15;
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11088,7 +11088,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('right');
           this.facing = 'right';
           this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 0;
+          this.weaponsprite.position.x = 50;
         }
       } else {
         if (this.facing != 'idle') {
