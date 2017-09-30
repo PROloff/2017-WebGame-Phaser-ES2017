@@ -76,6 +76,9 @@ export default class extends Phaser.Sprite {
 
     if (this.cursors.fire.isDown)
     {
+      game.load.audio('laser', 'assets/audio/laser6.mp3');
+      var laser;
+      playFx(keys.laser);
       this.weapon.fire(this.facing);
     }
   }
