@@ -10660,7 +10660,7 @@ var _Game = __webpack_require__(/*! ./states/Game */ 339);
 
 var _Game2 = _interopRequireDefault(_Game);
 
-var _GameOver = __webpack_require__(/*! ./states/GameOver */ 341);
+var _GameOver = __webpack_require__(/*! ./states/GameOver */ 342);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
 
@@ -10856,7 +10856,7 @@ var _class = function (_Phaser$State) {
       //this.load.image('bullet', 'assets/images/bullet.png');
       //this.load.image('ship', 'assets/images/ship.png');
       //this.load.image('smoke', 'assets/images/smoke.png');
-      this.load.image('bullet1', 'assets/images/bullet(1).png');
+      this.load.image('bullet1', 'assets/images/bullet (1).png');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
     }
@@ -10901,6 +10901,10 @@ var _Piteroid2 = _interopRequireDefault(_Piteroid);
 var _Player = __webpack_require__(/*! ../sprites/Player */ 340);
 
 var _Player2 = _interopRequireDefault(_Player);
+
+var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 341);
+
+var _Weapon2 = _interopRequireDefault(_Weapon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10963,13 +10967,180 @@ exports.default = _class;
   \*******************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: C:/Users/paulr/Desktop/Hackathon/Jump-n-Gun/src/sprites/Player.js: Unexpected token, expected ; (24:11)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m   \n \u001b[90m 23 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m  update() {\n \u001b[90m    | \u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mvelocity\u001b[33m.\u001b[39mx \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 26 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mjumpTimer \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 27 | \u001b[39m    \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcursors\u001b[33m.\u001b[39mleft\u001b[33m.\u001b[39misDown) {\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 29);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+var _Weapon = __webpack_require__(/*! ./Weapon */ 341);
+
+var _Weapon2 = _interopRequireDefault(_Weapon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'dude'));
+
+    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
+
+    _this.body.bounce.y = 0.2;
+    _this.body.collideWorldBounds = true;
+    _this.body.setSize(20, 32, 5, 16);
+
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+    _this.addChild(_this.weaponsprite);
+
+    _this.animations.add('left', [0, 1, 2, 3], 10, true);
+    _this.animations.add('turn', [4], 20, true);
+    _this.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    _this.cursors = game.input.keyboard.createCursorKeys();
+    _this.fireButton = _this.game.input.keyboard.addKey(_phaserCe2.default.KeyCode.ENTER);
+    _this.weapon = new _Weapon2.default(_this.game, _this);
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'update',
+    value: function update() {
+      this.body.velocity.x = 0;
+      this.jumpTimer = 0;
+      if (this.cursors.left.isDown) {
+        this.body.velocity.x = -150;
+
+        if (this.facing != 'left') {
+          this.animations.play('left');
+          this.facing = 'left';
+        }
+      } else if (this.cursors.right.isDown) {
+        this.body.velocity.x = 150;
+
+        if (this.facing != 'right') {
+          this.animations.play('right');
+          this.facing = 'right';
+        }
+      } else {
+        if (this.facing != 'idle') {
+          this.animations.stop();
+
+          if (this.facing == 'left') {
+            this.frame = 0;
+          } else {
+            this.frame = 5;
+          }
+
+          this.facing = 'idle';
+        }
+      }
+
+      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+        this.body.velocity.y = -250;
+        this.jumpTimer = game.time.now + 750;
+      }
+
+      if (this.fireButton.isDown) {
+        this.weapon.fire();
+      }
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.Sprite);
+
+exports.default = _class;
 
 /***/ }),
 /* 341 */
+/*!*******************************!*\
+  !*** ./src/sprites/Weapon.js ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 29);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game, parent) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bullet1'));
+
+    _this.bulletGravity = new _phaserCe2.default.Point(0, 0);
+
+    _this.weapon = game.add.weapon(40, 'bullet1');
+    _this.weapon.setBulletFrames(0, 80, true);
+    _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
+    _this.weapon.bulletSpeed = 400;
+    _this.weapon.fireRate = 200;
+
+    _this.weapon.trackSprite(parent, 0, 0, true);
+
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'fire',
+    value: function fire() {
+
+      this.weapon.fire();
+    }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.Sprite);
+
+exports.default = _class;
+
+/***/ }),
+/* 342 */
 /*!********************************!*\
   !*** ./src/states/GameOver.js ***!
   \********************************/
@@ -10994,7 +11165,7 @@ var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 128);
 
 var _Piteroid2 = _interopRequireDefault(_Piteroid);
 
-var _Ship = __webpack_require__(/*! ../sprites/Ship */ 342);
+var _Ship = __webpack_require__(/*! ../sprites/Ship */ 343);
 
 var _Ship2 = _interopRequireDefault(_Ship);
 
@@ -11042,7 +11213,7 @@ var _class = function (_Phaser$State) {
 exports.default = _class;
 
 /***/ }),
-/* 342 */
+/* 343 */
 /*!*****************************!*\
   !*** ./src/sprites/Ship.js ***!
   \*****************************/

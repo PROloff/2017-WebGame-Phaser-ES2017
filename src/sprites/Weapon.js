@@ -1,14 +1,14 @@
 import Phaser from 'phaser-ce';
 
 export default class extends Phaser.Sprite {
-  constructor ( game ) {
+  constructor ( game, parent) {
     super(game, 0, 0, 'bullet1');
     
+   this.bulletGravity = new Phaser.Point(0,0);
+    
+    
 
     
-    this.body.collideWorldBounds = true;
-
-    this.cursors = game.input.keyboard.createCursorKeys();
 
 
     this.weapon = game.add.weapon(40, 'bullet1');      
@@ -17,19 +17,21 @@ export default class extends Phaser.Sprite {
     this.weapon.bulletSpeed = 400;
     this.weapon.fireRate = 200;
 
-    this.weapon.trackSprite(this, 0, 0, true);
+    this.weapon.trackSprite(parent, 0, 0, true);
 
-    this.cursors = this.game.input.keyboard.createCursorKeys();
     
+   
     
   }
   get bullets (){
     return this.weapon.bullets;
   }
 
-  update() {
+  fire() {
    
     this.weapon.fire();
-
+   
+    
+    
   }
 }
