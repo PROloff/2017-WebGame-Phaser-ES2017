@@ -4268,7 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 60, 70, true);
+    _this.weapon.trackSprite(parent, 35, 38, true);
 
     return _this;
   }
@@ -10857,15 +10857,16 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeRot.png', 128, 128);
+      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
       this.load.image('background', 'assets/images/Hintergrund1.png');
       this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/retro.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau.png', 128, 128);
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
       this.load.image('Red', 'assets/images/RedWinsnew.png');
+      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
     }
   }, {
     key: 'create',
@@ -11046,7 +11047,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(40, 85, 45, 40);
+    _this.body.setSize(30, 55, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
@@ -11054,7 +11055,7 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 15, 40, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11063,6 +11064,8 @@ var _class = function (_Phaser$Sprite) {
     _this.addChild(_this.playersprite);
 
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
+
+    _this.laser = game.add.audio('Laser');
     return _this;
   }
 
@@ -11078,7 +11081,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('left');
           this.facing = 'left';
           this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = 15;
+          this.weaponsprite.position.x = -20;
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11087,7 +11090,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('right');
           this.facing = 'right';
           this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 50;
+          this.weaponsprite.position.x = 20;
         }
       } else {
         if (this.facing != 'idle') {
@@ -11108,6 +11111,7 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
+        this.laser.play();
       }
     }
   }, {
