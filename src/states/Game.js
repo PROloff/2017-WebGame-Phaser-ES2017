@@ -34,10 +34,6 @@ export default class extends Phaser.State {
   }
 
   update() {
-<<<<<<< HEAD
-    game.physics.arcade.collide(this.player, this.layer);
-    game.physics.arcade.collide(this.player2, this.layer);
-=======
     game.physics.arcade.collide(this.player,this.player2.bullets,this.collisionHandeler1, null, this);
     game.physics.arcade.collide(this.player2,this.player.bullets,this.collisionHandeler2, null, this);
   }
@@ -50,7 +46,6 @@ export default class extends Phaser.State {
   collisionHandeler2 (obj1, obj2)
   {
     this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
->>>>>>> 1643112749e944a55dfb688c0d1511d7f291e2a3
   }
 
 

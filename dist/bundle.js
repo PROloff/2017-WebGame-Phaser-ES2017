@@ -10952,23 +10952,16 @@ var _class = function (_Phaser$State) {
       this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
       this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
       this.add.existing(this.player2);
-<<<<<<< HEAD
       this.map = game.add.tilemap("testmap");
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
       this.layer = this.map.createLayer("Kachelebene 1");
       //this.level = new Level(game);
       //this.add.existing(this.level);
-=======
->>>>>>> 1643112749e944a55dfb688c0d1511d7f291e2a3
     }
   }, {
     key: 'update',
     value: function update() {
-<<<<<<< HEAD
-      game.physics.arcade.collide(this.player, this.layer);
-      game.physics.arcade.collide(this.player2, this.layer);
-=======
       game.physics.arcade.collide(this.player, this.player2.bullets, this.collisionHandeler1, null, this);
       game.physics.arcade.collide(this.player2, this.player.bullets, this.collisionHandeler2, null, this);
     }
@@ -10981,7 +10974,6 @@ var _class = function (_Phaser$State) {
     key: 'collisionHandeler2',
     value: function collisionHandeler2(obj1, obj2) {
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
->>>>>>> 1643112749e944a55dfb688c0d1511d7f291e2a3
     }
   }, {
     key: 'render',
