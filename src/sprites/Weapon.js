@@ -3,13 +3,6 @@ import Phaser from 'phaser-ce';
 export default class extends Phaser.Sprite {
   constructor ( game, parent) {
     super(game, 0, 0, 'bulletR');
-    
-   
-    
-    
-
-    
-
 
     this.weapon = game.add.weapon(40, 'bulletR');      
     this.weapon.setBulletFrames(0, 80, true);    
