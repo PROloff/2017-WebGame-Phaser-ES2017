@@ -10977,6 +10977,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bullet1', 'assets/images/bullet(1)');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
+      this.load.spritesheet('dude2', 'assets/images/dude2.jpg');
     }
   }, {
     key: 'create',
@@ -11016,9 +11017,9 @@ var _Piteroid = __webpack_require__(/*! ../sprites/Piteroid */ 128);
 
 var _Piteroid2 = _interopRequireDefault(_Piteroid);
 
-var _Ship = __webpack_require__(/*! ../sprites/Ship */ 129);
+var _Player = __webpack_require__(/*! ../sprites/Player */ 343);
 
-var _Ship2 = _interopRequireDefault(_Ship);
+var _Player2 = _interopRequireDefault(_Player);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11054,58 +11055,14 @@ var _class = function (_Phaser$State) {
 
       this.game.physics.arcade.gravity.y = 250;
 
-      this.player = game.add.sprite(32, 32, 'dude');
-      this.game.physics.enable(this.player, _phaserCe2.default.Physics.ARCADE);
-
-      this.player.body.bounce.y = 0.2;
-      this.player.body.collideWorldBounds = true;
-      this.player.body.setSize(20, 32, 5, 16);
-
-      this.player.animations.add('left', [0, 1, 2, 3], 10, true);
-      this.player.animations.add('turn', [4], 20, true);
-      this.player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-      this.cursors = game.input.keyboard.createCursorKeys();
-      this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
+      this.player = new _Player2.default(game);
+      this.add.existing(this.player);
+      this.player2 = new Player2(game);
+      this.add.existing(this.player2);
     }
   }, {
     key: 'update',
-    value: function update() {
-      this.player.body.velocity.x = 0;
-      this.jumpTimer = 0;
-      if (this.cursors.left.isDown) {
-        this.player.body.velocity.x = -150;
-
-        if (this.facing != 'left') {
-          this.player.animations.play('left');
-          this.facing = 'left';
-        }
-      } else if (this.cursors.right.isDown) {
-        this.player.body.velocity.x = 150;
-
-        if (this.facing != 'right') {
-          this.player.animations.play('right');
-          this.facing = 'right';
-        }
-      } else {
-        if (this.facing != 'idle') {
-          this.player.animations.stop();
-
-          if (this.facing == 'left') {
-            this.player.frame = 0;
-          } else {
-            this.player.frame = 5;
-          }
-
-          this.facing = 'idle';
-        }
-      }
-
-      if (this.jumpButton.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.player.body.velocity.y = -250;
-        this.jumpTimer = game.time.now + 750;
-      }
-    }
+    value: function update() {}
   }, {
     key: 'render',
     value: function render() {
@@ -11114,9 +11071,7 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
-}(_phaserCe2.default.State); //test
-//test2
-
+}(_phaserCe2.default.State);
 
 exports.default = _class;
 
@@ -11190,6 +11145,106 @@ var _class = function (_Phaser$State) {
 
   return _class;
 }(_phaserCe2.default.State);
+
+exports.default = _class;
+
+/***/ }),
+/* 342 */,
+/* 343 */
+/*!*******************************!*\
+  !*** ./src/sprites/Player.js ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'dude'));
+
+    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
+
+    _this.body.bounce.y = 0.2;
+    _this.body.collideWorldBounds = true;
+    _this.body.setSize(20, 32, 5, 16);
+
+    _this.animations.add('left', [0, 1, 2, 3], 10, true);
+    _this.animations.add('turn', [4], 20, true);
+    _this.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    _this.cursors = game.input.keyboard.createCursorKeys();
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+    _this.addChild(_this.weaponsprite);
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'update',
+    value: function update() {
+      this.body.velocity.x = 0;
+      this.jumpTimer = 0;
+      if (this.cursors.left.isDown) {
+        this.body.velocity.x = -150;
+
+        if (this.facing != 'left') {
+          this.animations.play('left');
+          this.facing = 'left';
+        }
+      } else if (this.cursors.right.isDown) {
+        this.body.velocity.x = 150;
+
+        if (this.facing != 'right') {
+          this.animations.play('right');
+          this.facing = 'right';
+        }
+      } else {
+        if (this.facing != 'idle') {
+          this.animations.stop();
+
+          if (this.facing == 'left') {
+            this.frame = 0;
+          } else {
+            this.frame = 5;
+          }
+
+          this.facing = 'idle';
+        }
+      }
+
+      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+        this.body.velocity.y = -250;
+        this.jumpTimer = game.time.now + 750;
+      }
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.Sprite);
 
 exports.default = _class;
 
