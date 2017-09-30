@@ -13,15 +13,9 @@ export default class extends Phaser.Sprite {
 
     this.playersprite = new Phaser.Sprite(game, 0, 0, spritekey);
     this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-<<<<<<< HEAD
-    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
-    this.playersprite.animations.add('idleLeft', [6], true);
-    this.playersprite.animations.add('idleRight', [7], true);
-=======
     this.playersprite.animations.add('idleL', [6], 10, true);
     this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     this.playersprite.animations.add('idleR', [7], 10, true);
->>>>>>> 407f8bcaecf6d7c0efaa96e8de1d078ea7d42e23
     this.cursors = cursors;
 
     this.weaponsprite = new Phaser.Sprite(game, 0, 10, 'weapon2');
@@ -54,43 +48,21 @@ export default class extends Phaser.Sprite {
         this.weaponsprite.animations.play('left');
         this.weaponsprite.position.x = -20;
        
-<<<<<<< HEAD
-   //   }
-=======
      // }
->>>>>>> 407f8bcaecf6d7c0efaa96e8de1d078ea7d42e23
     }
     else if (this.cursors.right.isDown) {
       this.body.velocity.x = 150;
 
-<<<<<<< HEAD
-     // if (this.facing != 'right') {
-=======
       //if (this.facing != 'right') {
->>>>>>> 407f8bcaecf6d7c0efaa96e8de1d078ea7d42e23
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 20;
-<<<<<<< HEAD
-    //  }
-=======
      // }
->>>>>>> 407f8bcaecf6d7c0efaa96e8de1d078ea7d42e23
     }
     else {
       if (this.facing != 'idle') {
         //this.playersprite.animations.stop();
-<<<<<<< HEAD
-
-        if (this.facing == 'left') {
-          this.frame = 0;
-          this.playersprite.animations.play('idleLeft');
-        }
-        else {
-          this.frame = 5;
-          this.playersprite.animations.play('idleRight');
-=======
         
 
         if (this.facing == 'left') {
@@ -100,7 +72,6 @@ export default class extends Phaser.Sprite {
         else {
           this.frame = 5;
           this.playersprite.animations.play('idleR')
->>>>>>> 407f8bcaecf6d7c0efaa96e8de1d078ea7d42e23
         }
       }
     }
