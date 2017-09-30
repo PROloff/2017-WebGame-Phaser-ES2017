@@ -11166,6 +11166,10 @@ var _phaserCe = __webpack_require__(/*! phaser-ce */ 21);
 
 var _phaserCe2 = _interopRequireDefault(_phaserCe);
 
+var _Weapon = __webpack_require__(/*! ./Weapon */ 129);
+
+var _Weapon2 = _interopRequireDefault(_Weapon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11195,6 +11199,10 @@ var _class = function (_Phaser$Sprite) {
     _this.cursors = game.input.keyboard.createCursorKeys();
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
     _this.addChild(_this.weaponsprite);
+
+    _this.cursors = game.input.keyboard.createCursorKeys();
+    _this.fireButton = _this.game.input.keyboard.addKey(_phaserCe2.default.KeyCode.SPACEBAR);
+    _this.weapon = new _Weapon2.default(_this.game, _this);
     return _this;
   }
 
@@ -11234,6 +11242,9 @@ var _class = function (_Phaser$Sprite) {
       if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.W) && this.body.onFloor() && game.time.now > this.jumpTimer) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
+      }
+      if (this.fireButton.isDown) {
+        this.weapon.fire();
       }
     }
   }]);
