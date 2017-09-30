@@ -16,7 +16,7 @@ export default class extends Phaser.State {
     this.game.physics.arcade.gravity.y = 250;
 
     this.player = new Player (game);
-    this.add (this.player);
+    this.add.existing (this.player);
   }
 
   update() {
