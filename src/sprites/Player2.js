@@ -2,7 +2,7 @@ import Phaser from 'phaser-ce';
 import Weapon from './Weapon';
 
 export default class extends Phaser.Sprite {
-  constructor ( game, spritekey, cursors ) {
+  constructor ( game, spritekey, cursors, bullet) {
     super(game, 100, 0);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     
@@ -17,14 +17,16 @@ export default class extends Phaser.Sprite {
     this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     this.cursors = cursors;
 
-    this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon2');
+    this.weaponsprite = new Phaser.Sprite(game, -30, 5, 'weapon2');
     this.weaponsprite.animations.add('left', [1], 1, true);
     this.weaponsprite.animations.add('right', [0], 1, true);
+    this.weaponsprite.animations.play('left');
     this.addChild(this.weaponsprite);
+
     this.addChild(this.playersprite);
 
     
-    this.weapon = new Weapon(this.game, this);
+    this.weapon = new Weapon(this.game, this, bullet);
   }
 
   update() {
@@ -37,7 +39,8 @@ export default class extends Phaser.Sprite {
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
-        
+        this.weaponsprite.position.x = -30;
+       
       }
     }
     else if (this.cursors.right.isDown) {
@@ -47,6 +50,8 @@ export default class extends Phaser.Sprite {
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 0;
+        
       }
     }
     else {
@@ -60,7 +65,7 @@ export default class extends Phaser.Sprite {
           this.frame = 5;
         }
 
-        this.facing = 'idle';
+       
       }
     }
 
@@ -68,9 +73,10 @@ export default class extends Phaser.Sprite {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }
-    if (this.cursors.fire.isDown){
-      this.weapon.fire();
-    }
 
+    if (this.cursors.fire.isDown)
+    {
+      this.weapon.fire(this.facing);
+    }
   }
 }
