@@ -28,6 +28,18 @@ export default class extends Phaser.State {
   }
 
   update() {
+    game.physics.arcade.collide(this.player,this.player2.bullets,this.collisionHandeler1, null, this);
+    game.physics.arcade.collide(this.player2,this.player.bullets,this.collisionHandeler2, null, this);
+  }
+
+  collisionHandeler1 (obj1, obj2)
+  {
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
+  }
+
+  collisionHandeler2 (obj1, obj2)
+  {
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
   }
 
 
