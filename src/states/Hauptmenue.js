@@ -13,5 +13,11 @@ export default class extends Phaser.State {
  resize() {
    this.Hauptmenue.x = this.world.centerX;
    this.Hauptmenue.y = this.world.centerY;
+
+ }
+
+ if(this.cursors.2.isDown)
+ {
+   
  }
 }
