@@ -11008,15 +11008,15 @@ var _class = function (_Phaser$Sprite) {
     _this.animations.add('right', [5, 6, 7, 8], 10, true);
 
     _this.cursors = game.input.keyboard.createCursorKeys();
-    _this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
 
-    _this.weapon = game.add.weapon(40, 'bullet');
+    _this.weapon = game.add.weapon(40, 'bullet1');
     _this.weapon.setBulletFrames(0, 80, true);
     _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
     _this.weapon.bulletSpeed = 400;
     _this.weapon.fireRate = 200;
 
     _this.weapon.trackSprite(_this, 0, 0, true);
+
     _this.cursors = _this.game.input.keyboard.createCursorKeys();
 
     _this.fireButton = _this.game.input.keyboard.addKey(_phaserCe2.default.KeyCode.SPACEBAR);
@@ -11061,6 +11061,14 @@ var _class = function (_Phaser$Sprite) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
+      if (this.fireButton.isDown) {
+        this.weapon.fire();
+      }
+    }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
     }
   }]);
 
