@@ -1,4 +1,5 @@
 import Phaser from 'phaser-ce';
+import Weapon from './Weapon';
 
 export default class extends Phaser.Sprite {
   constructor ( game, spritekey, cursors ) {
@@ -18,6 +19,9 @@ export default class extends Phaser.Sprite {
     this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
     this.addChild(this.weaponsprite);
     this.addChild(this.playersprite);
+
+    
+    this.weapon = new Weapon(this.game, this);
   }
 
   update() {
@@ -57,6 +61,9 @@ export default class extends Phaser.Sprite {
     if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
+    }
+    if (this.cursors.fire.isDown){
+      this.weapon.fire();
     }
 
   }
