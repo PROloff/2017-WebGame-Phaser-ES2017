@@ -4270,6 +4270,8 @@ var _class = function (_Phaser$Sprite) {
 
     _this.weapon.trackSprite(parent, 35, 38, true);
 
+    _this.laser = game.add.audio('Laser');
+
     return _this;
   }
 
@@ -4279,11 +4281,12 @@ var _class = function (_Phaser$Sprite) {
       if (facing == 'left') {
         this.weapon.bulletSpeed = -500;
         this.weapon.fire();
+        this.laser.play();
       } else {
         this.weapon.bulletSpeed = 500;
         this.weapon.fire();
+        this.laser.play();
       }
-      this.weapon.fire();
     }
   }, {
     key: 'bullets',
@@ -11008,127 +11011,10 @@ exports.default = _class;
   \********************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-var _Weapon = __webpack_require__(/*! ./Weapon */ 128);
-
-var _Weapon2 = _interopRequireDefault(_Weapon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$Sprite) {
-  _inherits(_class, _Phaser$Sprite);
-
-  function _class(game, spritekey, cursors, bullet) {
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
-
-    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
-
-    _this.body.bounce.y = 0.1;
-    _this.body.collideWorldBounds = true;
-    _this.body.setSize(30, 55, 20, 10);
-
-    _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
-    _this.playersprite.animations.add('idleLeft', [6], true);
-    _this.playersprite.animations.add('idleRight', [7], true);
-    _this.cursors = cursors;
-
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
-    _this.weaponsprite.animations.add('left', [1], 1, true);
-    _this.weaponsprite.animations.add('right', [0], 1, true);
-    _this.weaponsprite.animations.play('left');
-    _this.addChild(_this.weaponsprite);
-
-    _this.addChild(_this.playersprite);
-
-    _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
-
-    _this.laser = game.add.audio('Laser');
-    return _this;
-  }
-
-  _createClass(_class, [{
-    key: 'update',
-    value: function update() {
-      this.body.velocity.x = 0;
-      this.jumpTimer = 0;
-      if (this.cursors.left.isDown) {
-        this.body.velocity.x = -150;
-
-        //if (this.facing != 'left') {
-        this.playersprite.animations.play('left');
-        this.facing = 'left';
-        this.weaponsprite.animations.play('left');
-        this.weaponsprite.position.x = -20;
-
-        //   }
-      } else if (this.cursors.right.isDown) {
-        this.body.velocity.x = 150;
-
-        // if (this.facing != 'right') {
-        this.playersprite.animations.play('right');
-        this.facing = 'right';
-        this.weaponsprite.animations.play('right');
-        this.weaponsprite.position.x = 20;
-        //  }
-      } else {
-        if (this.facing != 'idle') {
-          //this.playersprite.animations.stop();
-
-          if (this.facing == 'left') {
-            this.frame = 0;
-            this.playersprite.animations.play('idleLeft');
-          } else {
-            this.frame = 5;
-            this.playersprite.animations.play('idleRight');
-          }
-        }
-      }
-
-      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.body.velocity.y = -350;
-        this.jumpTimer = game.time.now + 750;
-      }
-
-      if (this.cursors.fire.isDown) {
-        this.weapon.fire(this.facing);
-        this.laser.play();
-      }
-    }
-  }, {
-    key: 'bullets',
-    get: function get() {
-      return this.weapon.bullets;
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.Sprite);
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: Unexpected token (16:0)\n\n\u001b[0m \u001b[90m 14 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mplayersprite \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mPhaser\u001b[39m\u001b[33m.\u001b[39m\u001b[33mSprite\u001b[39m(game\u001b[33m,\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m spritekey)\u001b[33m;\u001b[39m\n \u001b[90m 15 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mplayersprite\u001b[33m.\u001b[39manimations\u001b[33m.\u001b[39madd(\u001b[32m'left'\u001b[39m\u001b[33m,\u001b[39m [\u001b[35m5\u001b[39m\u001b[33m,\u001b[39m \u001b[35m4\u001b[39m\u001b[33m,\u001b[39m \u001b[35m3\u001b[39m\u001b[33m,\u001b[39m \u001b[35m2\u001b[39m\u001b[33m,\u001b[39m \u001b[35m1\u001b[39m\u001b[33m,\u001b[39m \u001b[35m0\u001b[39m]\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m \u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mplayersprite\u001b[33m.\u001b[39manimations\u001b[33m.\u001b[39madd(\u001b[32m'right'\u001b[39m\u001b[33m,\u001b[39m [\u001b[35m8\u001b[39m\u001b[33m,\u001b[39m \u001b[35m9\u001b[39m\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m \u001b[35m11\u001b[39m\u001b[33m,\u001b[39m \u001b[35m12\u001b[39m]\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m \u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mplayersprite\u001b[33m.\u001b[39manimations\u001b[33m.\u001b[39madd(\u001b[32m'idleLeft'\u001b[39m\u001b[33m,\u001b[39m [\u001b[35m6\u001b[39m]\u001b[33m,\u001b[39m \u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mplayersprite\u001b[33m.\u001b[39manimations\u001b[33m.\u001b[39madd(\u001b[32m'idleRight'\u001b[39m\u001b[33m,\u001b[39m [\u001b[35m7\u001b[39m]\u001b[33m,\u001b[39m \u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 341 */
