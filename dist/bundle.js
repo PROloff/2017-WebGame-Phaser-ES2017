@@ -4231,66 +4231,10 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
   \*******************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$Sprite) {
-  _inherits(_class, _Phaser$Sprite);
-
-  function _class(game, parent) {
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bulletR'));
-
-    _this.weapon = game.add.weapon(40, 'bulletR');
-    _this.weapon.setBulletFrames(0, 80, true);
-    _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
-    _this.weapon.bulletSpeed = 500;
-    _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
-    _this.weapon.fireRate = 600;
-
-    _this.weapon.trackSprite(parent, 0, 0, true);
-
-    return _this;
-  }
-
-  _createClass(_class, [{
-    key: 'fire',
-    value: function fire() {
-
-      this.weapon.fire();
-    }
-  }, {
-    key: 'bullets',
-    get: function get() {
-      return this.weapon.bullets;
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.Sprite);
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: C:/Users/paulr/Desktop/Hackathon/Jump-n-Gun/src/sprites/Weapon.js: Unexpected token (5:0)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mclass\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mPhaser\u001b[39m\u001b[33m.\u001b[39m\u001b[33mSprite\u001b[39m {\n \u001b[90m 4 | \u001b[39m  constructor ( game\u001b[33m,\u001b[39m parent) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m   | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 | \u001b[39m    \u001b[36msuper\u001b[39m(game\u001b[33m,\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'bulletR'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 7 | \u001b[39m\n \u001b[90m 8 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mweapon \u001b[33m=\u001b[39m game\u001b[33m.\u001b[39madd\u001b[33m.\u001b[39mweapon(\u001b[35m40\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'bulletR'\u001b[39m)\u001b[33m;\u001b[39m      \u001b[0m\n");
 
 /***/ }),
 /* 129 */
@@ -11067,8 +11011,9 @@ var _class = function (_Phaser$Sprite) {
         this.body.velocity.y = -250;
         this.jumpTimer = game.time.now + 750;
       }
+
       if (this.cursors.fire.isDown) {
-        this.weapon.fire();
+        this.weapon.fire(this.facing);
       }
     }
   }]);
