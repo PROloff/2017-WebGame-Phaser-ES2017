@@ -2,7 +2,7 @@ import Phaser from 'phaser-ce';
 import Weapon from './Weapon';
 
 export default class extends Phaser.Sprite {
-  constructor ( game, spritekey, cursors ) {
+  constructor ( game, spritekey, cursors, bullet) {
     super(game, 100, 0);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     
@@ -26,7 +26,7 @@ export default class extends Phaser.Sprite {
     this.addChild(this.playersprite);
 
     
-    this.weapon = new Weapon(this.game, this);
+    this.weapon = new Weapon(this.game, this, bullet);
   }
 
   update() {
@@ -65,7 +65,7 @@ export default class extends Phaser.Sprite {
           this.frame = 5;
         }
 
-        this.facing = 'idle';
+       
       }
     }
 

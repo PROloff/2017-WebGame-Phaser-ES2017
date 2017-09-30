@@ -4257,6 +4257,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Phaser$Sprite) {
   _inherits(_class, _Phaser$Sprite);
 
+<<<<<<< HEAD
   function _class(game, parent) {
     _classCallCheck(this, _class);
 
@@ -4267,6 +4268,19 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 200;
+=======
+  function _class(game, parent, bullet) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, bullet));
+
+    _this.weapon = game.add.weapon(40, bullet);
+    _this.weapon.setBulletFrames(0, 80, true);
+    _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
+    _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
+    _this.weapon.fireRate = 600;
+
+>>>>>>> 8f80b17911ea36451a1a9c6657d140f4b6da7e88
     _this.weapon.trackSprite(parent, 0, 0, true);
 
     return _this;
@@ -4307,7 +4321,11 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */130);
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
+=======
+module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
+>>>>>>> 8f80b17911ea36451a1a9c6657d140f4b6da7e88
 
 
 /***/ }),
@@ -10916,6 +10934,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _class = function (_Phaser$State) {
+<<<<<<< HEAD
   _inherits(_class, _Phaser$State);
 
   function _class() {
@@ -10972,6 +10991,55 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
+=======
+    _inherits(_class, _Phaser$State);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: 'init',
+        value: function init() {}
+    }, {
+        key: 'preload',
+        value: function preload() {}
+    }, {
+        key: 'create',
+        value: function create() {
+
+            this.game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
+
+            this.game.time.desiredFps = 30;
+
+            this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
+
+            this.game.physics.arcade.gravity.y = 250;
+
+            var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
+            this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
+            this.player.position = new _phaserCe2.default.Point(100, 0);
+            this.add.existing(this.player);
+
+            var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT, 'fire': _phaserCe2.default.KeyCode.ENTER });
+            this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
+            this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
+            this.add.existing(this.player2);
+        }
+    }, {
+        key: 'update',
+        value: function update() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            game.debug.text(game.time.suggestedFps, 32, 32);
+        }
+    }]);
+
+    return _class;
+>>>>>>> 8f80b17911ea36451a1a9c6657d140f4b6da7e88
 }(_phaserCe2.default.State);
 
 exports.default = _class;
@@ -11013,7 +11081,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Phaser$Sprite) {
   _inherits(_class, _Phaser$Sprite);
 
-  function _class(game, spritekey, cursors) {
+  function _class(game, spritekey, cursors, bullet) {
     _classCallCheck(this, _class);
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
@@ -11038,7 +11106,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.addChild(_this.playersprite);
 
-    _this.weapon = new _Weapon2.default(_this.game, _this);
+    _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
     return _this;
   }
 
@@ -11074,8 +11142,6 @@ var _class = function (_Phaser$Sprite) {
           } else {
             this.frame = 5;
           }
-
-          this.facing = 'idle';
         }
       }
 

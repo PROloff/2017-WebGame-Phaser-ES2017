@@ -17,12 +17,12 @@ export default class extends Phaser.State {
     this.game.physics.arcade.gravity.y = 250;
 
     var player1keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.W, 'left' : Phaser.KeyCode.A, 'right' : Phaser.KeyCode.D, 'fire' : Phaser.KeyCode.SPACEBAR})
-    this.player = new Player2 (game, 'dude', player1keys);
+    this.player = new Player2 (game, 'dude', player1keys, 'bulletR');
     this.player.position = new Phaser.Point (100, 0);
     this.add.existing (this.player);
 
     var player2keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.UP, 'left' : Phaser.KeyCode.LEFT, 'right' : Phaser.KeyCode.RIGHT, 'fire' : Phaser.KeyCode.ENTER})
-    this.player2 = new Player2 (game, 'dude2', player2keys);
+    this.player2 = new Player2 (game, 'dude2', player2keys, 'bulletB');
     this.player2.position = new Phaser.Point (innerWidth-100, 0);
     this.add.existing (this.player2);
     this.map = game.add.tilemap("testmap");
