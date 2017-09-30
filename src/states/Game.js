@@ -17,6 +17,8 @@ export default class extends Phaser.State {
 
     this.player = new Player (game);
     this.add.existing (this.player);
+    this.player2 = new Player2 (game);
+    this.add.existing (this.player2);
   }
 
   update() {
@@ -26,5 +28,5 @@ export default class extends Phaser.State {
   render() { 
     game.debug.text(game.time.suggestedFps, 32, 32);
   }
-}//test
-//test2
+}
+

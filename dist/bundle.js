@@ -10859,6 +10859,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bullet1', 'assets/images/bullet(1)');
       this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
       this.load.image('background', 'assets/images/background.jpg');
+      this.load.spritesheet('dude2', 'assets/images/dude2.jpg');
     }
   }, {
     key: 'create',
@@ -10938,6 +10939,8 @@ var _class = function (_Phaser$State) {
 
       this.player = new _Player2.default(game);
       this.add.existing(this.player);
+      this.player2 = new Player2(game);
+      this.add.existing(this.player2);
     }
   }, {
     key: 'update',
@@ -10950,9 +10953,7 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
-}(_phaserCe2.default.State); //test
-//test2
-
+}(_phaserCe2.default.State);
 
 exports.default = _class;
 
