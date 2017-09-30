@@ -16,8 +16,13 @@ export default class extends Phaser.Sprite {
     this.playersprite.animations.add('turn', [4], 20, true);
     this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     this.cursors = cursors;
-    this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
+
+    this.weaponsprite = new Phaser.Sprite(game, -30, 5, 'weapon2');
+    this.weaponsprite.animations.add('left', [1], 1, true);
+    this.weaponsprite.animations.add('right', [0], 1, true);
+    this.weaponsprite.animations.play('left');
     this.addChild(this.weaponsprite);
+
     this.addChild(this.playersprite);
 
     
@@ -33,6 +38,9 @@ export default class extends Phaser.Sprite {
       if (this.facing != 'left') {
         this.playersprite.animations.play('left');
         this.facing = 'left';
+        this.weaponsprite.animations.play('left');
+        this.weaponsprite.position.x = -30;
+       
       }
     }
     else if (this.cursors.right.isDown) {
@@ -41,6 +49,9 @@ export default class extends Phaser.Sprite {
       if (this.facing != 'right') {
         this.playersprite.animations.play('right');
         this.facing = 'right';
+        this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 0;
+        
       }
     }
     else {
@@ -62,9 +73,10 @@ export default class extends Phaser.Sprite {
       this.body.velocity.y = -250;
       this.jumpTimer = game.time.now + 750;
     }
-    if (this.cursors.fire.isDown){
-      this.weapon.fire();
-    }
 
+    if (this.cursors.fire.isDown)
+    {
+      this.weapon.fire(this.facing);
+    }
   }
 }
