@@ -1,6 +1,5 @@
 import Phaser from 'phaser-ce';
-import Piteroid from '../sprites/Piteroid';
-import Player from '../sprites/Player';
+import Weapon from '../sprites/Weapon';
 import Player2 from '../sprites/Player2';
 
 export default class extends Phaser.State {
@@ -8,6 +7,7 @@ export default class extends Phaser.State {
   preload() { }
   
   create() {
+
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.game.time.desiredFps = 30;
@@ -16,9 +16,14 @@ export default class extends Phaser.State {
 
     this.game.physics.arcade.gravity.y = 250;
 
-    this.player = new Player (game);
+    var player1keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.W, 'left' : Phaser.KeyCode.A, 'right' : Phaser.KeyCode.D, 'fire' : Phaser.KeyCode.SPACEBAR})
+    this.player = new Player2 (game, 'dude', player1keys);
+    this.player.position = new Phaser.Point (100, 0);
     this.add.existing (this.player);
-    this.player2 = new Player2 (game);
+
+    var player2keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.UP, 'left' : Phaser.KeyCode.LEFT, 'right' : Phaser.KeyCode.RIGHT, 'fire' : Phaser.KeyCode.ENTER})
+    this.player2 = new Player2 (game, 'dude2', player2keys);
+    this.player2.position = new Phaser.Point (innerWidth-100, 0);
     this.add.existing (this.player2);
   }
 

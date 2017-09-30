@@ -1,6 +1,5 @@
 import Phaser from 'phaser-ce';
-import Piteroid from '../sprites/Piteroid';
-import Ship from '../sprites/Ship';
+ 
 
 export default class extends Phaser.State {
 
