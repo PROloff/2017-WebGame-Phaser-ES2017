@@ -4,13 +4,7 @@ import Phaser from 'phaser-ce';
 export default class extends Phaser.State {
 
   create () {
-    this.gameOver = this.add.text(0, 40, 'Winner');
-    this.gameOver.font = 'Bangers';
-    this.gameOver.padding.set(10, 16);
-    this.gameOver.fontSize = 100;
-    this.gameOver.fill = '#DF1D28';
-    this.gameOver.smoothed = false;
-    this.gameOver.anchor.setTo(0.5);
+    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
     this.resize();
   }

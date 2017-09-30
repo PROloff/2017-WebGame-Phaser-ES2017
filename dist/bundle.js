@@ -4268,7 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 0, 0, true);
+    _this.weapon.trackSprite(parent, 35, 38, true);
 
     return _this;
   }
@@ -4284,8 +4284,7 @@ var _class = function (_Phaser$Sprite) {
         this.weapon.fire();
       }
       this.weapon.fire();
-    } //test
-
+    }
   }, {
     key: 'bullets',
     get: function get() {
@@ -10864,12 +10863,20 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
-      this.load.image('background', 'assets/images/background.jpg');
-      this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
+      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
+      this.load.image('background', 'assets/images/Hintergrund1.png');
+      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/strasse.png');
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
+<<<<<<< HEAD
       this.load.image('hauptmenue', 'assets/images/background2.jpg');
+=======
+      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
+      this.load.image('Red', 'assets/images/RedWinsnew.png');
+      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+>>>>>>> 1ee8985f9cab18e571e68803835e2a73ca4b4e73
     }
   }, {
     key: 'create',
@@ -10897,7 +10904,7 @@ exports.default = _class;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10923,57 +10930,93 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _class = function (_Phaser$State) {
-    _inherits(_class, _Phaser$State);
+  _inherits(_class, _Phaser$State);
 
-    function _class() {
-        _classCallCheck(this, _class);
+  function _class() {
+    _classCallCheck(this, _class);
 
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'preload',
+    value: function preload() {}
+  }, {
+    key: 'create',
+    value: function create() {
+
+      this.game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
+
+      this.game.time.desiredFps = 30;
+
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
+
+      this.game.physics.arcade.gravity.y = 250;
+
+      var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
+      this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
+      this.player.position = new _phaserCe2.default.Point(100, 0);
+      this.add.existing(this.player);
+
+      var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT, 'fire': _phaserCe2.default.KeyCode.ENTER });
+      this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
+      this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
+      this.add.existing(this.player2);
+      this.map = game.add.tilemap("map");
+      this.map.addTilesetImage("Tileset1");
+      this.map.setCollisionByExclusion([0]);
+      this.layer = this.map.createLayer("Kachelebene 1");
+      //this.level = new Level(game);
+      //this.add.existing(this.level);
     }
+  }, {
+    key: 'update',
+    value: function update() {
+      game.physics.arcade.collide(this.player, this.layer);
+      game.physics.arcade.collide(this.player2, this.layer);
 
-    _createClass(_class, [{
-        key: 'init',
-        value: function init() {}
-    }, {
-        key: 'preload',
-        value: function preload() {}
-    }, {
-        key: 'create',
-        value: function create() {
+      game.physics.arcade.collide(this.player, this.player2.bullets, this.collisionHandeler1, null, this);
+      game.physics.arcade.collide(this.player2, this.player.bullets, this.collisionHandeler2, null, this);
 
-            this.game.physics.startSystem(_phaserCe2.default.Physics.ARCADE);
+      game.physics.arcade.collide(this.player.bullets, this.layer, this.bullet, null, this);
+      game.physics.arcade.collide(this.player2.bullets, this.layer, this.bullet, null, this);
+    }
+  }, {
+    key: 'bullet',
+    value: function bullet(_bullet) {
+      _bullet.kill();
+    }
+  }, {
+    key: 'collisionHandeler1',
+    value: function collisionHandeler1(obj1, obj2) {
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
+    }
+  }, {
+    key: 'collisionHandeler2',
+    value: function collisionHandeler2(obj1, obj2) {
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      game.debug.text(game.time.suggestedFps, 32, 32);
+      //game.debug.body(this.player);
+    }
+  }]);
 
-            this.game.time.desiredFps = 30;
-
-            this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
-
-            this.game.physics.arcade.gravity.y = 250;
-
-            var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
-            this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
-            this.player.position = new _phaserCe2.default.Point(100, 0);
-            this.add.existing(this.player);
-
-            var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT, 'fire': _phaserCe2.default.KeyCode.ENTER });
-            this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
-            this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
-            this.add.existing(this.player2);
-        }
-    }, {
-        key: 'update',
-        value: function update() {}
-    }, {
-        key: 'render',
-        value: function render() {
-            game.debug.text(game.time.suggestedFps, 32, 32);
-        }
-    }]);
-
+<<<<<<< HEAD
     return _class;
 }(_phaserCe2.default.State); //test
 //test2
 //test 3
 
+=======
+  return _class;
+}(_phaserCe2.default.State);
+>>>>>>> 1ee8985f9cab18e571e68803835e2a73ca4b4e73
 
 exports.default = _class;
 
@@ -11021,17 +11064,17 @@ var _class = function (_Phaser$Sprite) {
 
     _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
 
-    _this.body.bounce.y = 0.2;
+    _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(20, 32, 5, 16);
+    _this.body.setSize(30, 55, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [0, 1, 2, 3], 10, true);
-    _this.playersprite.animations.add('turn', [4], 20, true);
-    _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
+    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
+    _this.playersprite.animations.add('turn', [6], 20, true);
+    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, 5, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11040,6 +11083,8 @@ var _class = function (_Phaser$Sprite) {
     _this.addChild(_this.playersprite);
 
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
+
+    _this.laser = game.add.audio('Laser');
     return _this;
   }
 
@@ -11055,7 +11100,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('left');
           this.facing = 'left';
           this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = -30;
+          this.weaponsprite.position.x = -20;
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11064,7 +11109,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('right');
           this.facing = 'right';
           this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 0;
+          this.weaponsprite.position.x = 20;
         }
       } else {
         if (this.facing != 'idle') {
@@ -11079,7 +11124,7 @@ var _class = function (_Phaser$Sprite) {
       }
 
       if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.body.velocity.y = -250;
+        this.body.velocity.y = -350;
         this.jumpTimer = game.time.now + 750;
       }
 
@@ -11088,7 +11133,13 @@ var _class = function (_Phaser$Sprite) {
         var laser;
         playFx(keys.laser);
         this.weapon.fire(this.facing);
+        this.laser.play();
       }
+    }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
     }
   }]);
 
@@ -11139,13 +11190,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-      this.gameOver = this.add.text(0, 40, 'Winner');
-      this.gameOver.font = 'Bangers';
-      this.gameOver.padding.set(10, 16);
-      this.gameOver.fontSize = 100;
-      this.gameOver.fill = '#DF1D28';
-      this.gameOver.smoothed = false;
-      this.gameOver.anchor.setTo(0.5);
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
       this.resize();
     }
