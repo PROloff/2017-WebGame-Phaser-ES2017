@@ -4268,7 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 60, 70, true);
+    _this.weapon.trackSprite(parent, 35, 38, true);
 
     return _this;
   }
@@ -10810,75 +10810,10 @@ exports.default = _class;
   \******************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$State) {
-  _inherits(_class, _Phaser$State);
-
-  function _class() {
-    _classCallCheck(this, _class);
-
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-  }
-
-  _createClass(_class, [{
-    key: 'init',
-    value: function init() {}
-  }, {
-    key: 'preload',
-    value: function preload() {
-      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
-      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-
-      this.load.setPreloadSprite(this.loaderBar);
-      //
-      // load your assets
-      //
-      this.load.image('bulletR', 'assets/images/bulletRot.png');
-      this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 128, 128);
-      this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.image('background', 'assets/images/background.jpg');
-      this.load.tilemap('testmap', 'assets/map/Testmap.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/ts900000.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 128, 128);
-      this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
-      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
-      this.load.image('Red', 'assets/images/RedWinsnew.png');
-    }
-  }, {
-    key: 'create',
-    value: function create() {
-      this.state.start('Game');
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.State);
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: C:/Users/schueler.S9-NEU/Desktop/Jump-n-Gun/src/states/Splash.js: Unexpected token (16:0)\n\n\u001b[0m \u001b[90m 14 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mimage(\u001b[32m'bulletR'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/images/bulletRot.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mimage(\u001b[32m'bulletB'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/images/bulletBlau.png'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mspritesheet(\u001b[32m'dude'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'assets/images/dudeRot_klein.png'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m128\u001b[39m\u001b[33m,\u001b[39m \u001b[35m128\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\n \u001b[90m 19 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mspritesheet(\u001b[32m'dude'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'assets/images/dudeGrün_klein.png'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m64\u001b[39m\u001b[33m,\u001b[39m \u001b[35m64\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 339 */
@@ -11047,7 +10982,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(40, 85, 45, 40);
+    _this.body.setSize(30, 55, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
@@ -11055,7 +10990,7 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 15, 40, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11064,6 +10999,8 @@ var _class = function (_Phaser$Sprite) {
     _this.addChild(_this.playersprite);
 
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
+
+    _this.laser = game.add.audio('Laser');
     return _this;
   }
 
@@ -11079,7 +11016,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('left');
           this.facing = 'left';
           this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = 15;
+          this.weaponsprite.position.x = -20;
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11088,7 +11025,7 @@ var _class = function (_Phaser$Sprite) {
           this.playersprite.animations.play('right');
           this.facing = 'right';
           this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 50;
+          this.weaponsprite.position.x = 20;
         }
       } else {
         if (this.facing != 'idle') {
@@ -11109,6 +11046,7 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
+        this.laser.play();
       }
     }
   }, {
