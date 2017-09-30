@@ -11053,7 +11053,7 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, 5, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, -30, -30, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
