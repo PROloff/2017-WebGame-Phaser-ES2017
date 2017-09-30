@@ -4303,8 +4303,17 @@ exports.default = _class;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! babel-polyfill */130);
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
+=======
+__webpack_require__(/*! babel-polyfill */131);
+<<<<<<< HEAD
+module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
+=======
+module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */333);
+>>>>>>> 2deae8e5841d5bfd85d50af8f235795140e322db
+>>>>>>> 1f9103aad2422f7794468f091c2960d3d1b67e7e
 
 
 /***/ }),
@@ -11048,7 +11057,13 @@ var _class = function (_Phaser$Sprite) {
   }]);
 
   return _class;
+<<<<<<< HEAD
 }(_phaserCe2.default.Sprite);
+=======
+}(_phaserCe2.default.State); //test
+//test2
+
+>>>>>>> 1f9103aad2422f7794468f091c2960d3d1b67e7e
 
 exports.default = _class;
 
