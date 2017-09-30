@@ -1,10 +1,10 @@
 import Phaser from 'phaser-ce';
 
 export default class extends Phaser.Sprite {
-  constructor ( game, parent) {
-    super(game, 0, 0, 'bulletR');
+  constructor ( game, parent, bullet) {
+    super(game, 0, 0, bullet);
 
-    this.weapon = game.add.weapon(40, 'bulletR');      
+    this.weapon = game.add.weapon(40, bullet);      
     this.weapon.setBulletFrames(0, 80, true);    
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     this.weapon.bulletGravity = new Phaser.Point (0,-250);

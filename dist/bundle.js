@@ -4257,12 +4257,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Phaser$Sprite) {
   _inherits(_class, _Phaser$Sprite);
 
-  function _class(game, parent) {
+  function _class(game, parent, bullet) {
     _classCallCheck(this, _class);
 
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bulletR'));
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, bullet));
 
-    _this.weapon = game.add.weapon(40, 'bulletR');
+    _this.weapon = game.add.weapon(40, bullet);
     _this.weapon.setBulletFrames(0, 80, true);
     _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
@@ -10942,12 +10942,12 @@ var _class = function (_Phaser$State) {
             this.game.physics.arcade.gravity.y = 250;
 
             var player1keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.W, 'left': _phaserCe2.default.KeyCode.A, 'right': _phaserCe2.default.KeyCode.D, 'fire': _phaserCe2.default.KeyCode.SPACEBAR });
-            this.player = new _Player2.default(game, 'dude', player1keys);
+            this.player = new _Player2.default(game, 'dude', player1keys, 'bulletR');
             this.player.position = new _phaserCe2.default.Point(100, 0);
             this.add.existing(this.player);
 
             var player2keys = game.input.keyboard.addKeys({ 'up': _phaserCe2.default.KeyCode.UP, 'left': _phaserCe2.default.KeyCode.LEFT, 'right': _phaserCe2.default.KeyCode.RIGHT, 'fire': _phaserCe2.default.KeyCode.ENTER });
-            this.player2 = new _Player2.default(game, 'dude2', player2keys);
+            this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
             this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
             this.add.existing(this.player2);
         }
@@ -11003,7 +11003,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Phaser$Sprite) {
   _inherits(_class, _Phaser$Sprite);
 
-  function _class(game, spritekey, cursors) {
+  function _class(game, spritekey, cursors, bullet) {
     _classCallCheck(this, _class);
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
@@ -11028,7 +11028,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.addChild(_this.playersprite);
 
-    _this.weapon = new _Weapon2.default(_this.game, _this);
+    _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
     return _this;
   }
 
