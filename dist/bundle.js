@@ -4284,8 +4284,7 @@ var _class = function (_Phaser$Sprite) {
         this.weapon.fire();
       }
       this.weapon.fire();
-    } //test
-
+    }
   }, {
     key: 'bullets',
     get: function get() {
@@ -10865,6 +10864,7 @@ var _class = function (_Phaser$State) {
       this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
+      this.load.image('gameover', 'assets/images/gameover.jpg');
     }
   }, {
     key: 'create',
@@ -10952,18 +10952,36 @@ var _class = function (_Phaser$State) {
       this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
       this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
       this.add.existing(this.player2);
+<<<<<<< HEAD
       this.map = game.add.tilemap("testmap");
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
       this.layer = this.map.createLayer("Kachelebene 1");
       //this.level = new Level(game);
       //this.add.existing(this.level);
+=======
+>>>>>>> 1643112749e944a55dfb688c0d1511d7f291e2a3
     }
   }, {
     key: 'update',
     value: function update() {
+<<<<<<< HEAD
       game.physics.arcade.collide(this.player, this.layer);
       game.physics.arcade.collide(this.player2, this.layer);
+=======
+      game.physics.arcade.collide(this.player, this.player2.bullets, this.collisionHandeler1, null, this);
+      game.physics.arcade.collide(this.player2, this.player.bullets, this.collisionHandeler2, null, this);
+    }
+  }, {
+    key: 'collisionHandeler1',
+    value: function collisionHandeler1(obj1, obj2) {
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
+    }
+  }, {
+    key: 'collisionHandeler2',
+    value: function collisionHandeler2(obj1, obj2) {
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'gameover');
+>>>>>>> 1643112749e944a55dfb688c0d1511d7f291e2a3
     }
   }, {
     key: 'render',
@@ -11087,6 +11105,11 @@ var _class = function (_Phaser$Sprite) {
         this.weapon.fire(this.facing);
       }
     }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
+    }
   }]);
 
   return _class;
@@ -11136,13 +11159,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-      this.gameOver = this.add.text(0, 40, 'Winner');
-      this.gameOver.font = 'Bangers';
-      this.gameOver.padding.set(10, 16);
-      this.gameOver.fontSize = 100;
-      this.gameOver.fill = '#DF1D28';
-      this.gameOver.smoothed = false;
-      this.gameOver.anchor.setTo(0.5);
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
 
       this.resize();
     }

@@ -28,6 +28,10 @@ export default class extends Phaser.Sprite {
     
     this.weapon = new Weapon(this.game, this, bullet);
   }
+  
+  get bullets (){
+    return this.weapon.bullets;
+  }
 
   update() {
     this.body.velocity.x = 0;
@@ -51,7 +55,6 @@ export default class extends Phaser.Sprite {
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 0;
-        
       }
     }
     else {
@@ -64,8 +67,6 @@ export default class extends Phaser.Sprite {
         else {
           this.frame = 5;
         }
-
-       
       }
     }
 
