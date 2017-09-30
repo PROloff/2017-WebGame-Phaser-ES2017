@@ -4225,11 +4225,6 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /* 125 */,
 /* 126 */,
 /* 127 */,
-<<<<<<< HEAD
-/* 128 */,
-/* 129 */,
-/* 130 */
-=======
 /* 128 */
 /*!*******************************!*\
   !*** ./src/sprites/Weapon.js ***!
@@ -4299,7 +4294,6 @@ exports.default = _class;
 
 /***/ }),
 /* 129 */
->>>>>>> 7192cfe8daa45cb76d5917f66a3e3c06a3403e30
 /*!******************************************!*\
   !*** multi babel-polyfill ./src/Game.js ***!
   \******************************************/
@@ -4308,7 +4302,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */130);
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
+module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
 
 
 /***/ }),
@@ -10896,19 +10890,11 @@ var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
 
 var _phaserCe2 = _interopRequireDefault(_phaserCe);
 
-<<<<<<< HEAD
-var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 91);
-
-var _Weapon2 = _interopRequireDefault(_Weapon);
-
-var _Player = __webpack_require__(/*! ../sprites/Player2 */ 342);
-=======
 var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 128);
 
 var _Weapon2 = _interopRequireDefault(_Weapon);
 
 var _Player = __webpack_require__(/*! ../sprites/Player2 */ 340);
->>>>>>> 7192cfe8daa45cb76d5917f66a3e3c06a3403e30
 
 var _Player2 = _interopRequireDefault(_Player);
 
@@ -10973,12 +10959,7 @@ var _class = function (_Phaser$State) {
 exports.default = _class;
 
 /***/ }),
-<<<<<<< HEAD
-/* 341 */,
-/* 342 */
-=======
 /* 340 */
->>>>>>> 7192cfe8daa45cb76d5917f66a3e3c06a3403e30
 /*!********************************!*\
   !*** ./src/sprites/Player2.js ***!
   \********************************/
