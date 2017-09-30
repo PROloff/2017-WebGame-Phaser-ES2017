@@ -13,7 +13,7 @@ export default class extends Phaser.State {
     //
     this.load.image('bulletR', 'assets/images/bulletRot.png');
     this.load.image('bulletB', 'assets/images/bulletBlau.png');
-    this.load.spritesheet('dude','assets/images/dudeRot.png', 128, 128);
+    this.load.spritesheet('dude','assets/images/dudeRot_klein.png', 64, 64);
     this.load.image('background', 'assets/images/Hintergrund1.png');
     this.load.image('background', 'assets/images/background.jpg');
     this.load.tilemap('testmap', 'assets/map/Testmap.json', null, Phaser.Tilemap.TILED_JSON);
@@ -23,6 +23,7 @@ export default class extends Phaser.State {
     this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
     this.load.image ('Blue','assets/images/BlueWinsnew.png');
     this.load.image ('Red','assets/images/RedWinsnew.png');
+    this.load.audio ('Laser','assets/sounds1/LASER.mp3');
   }
 
   create () {
