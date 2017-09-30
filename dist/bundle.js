@@ -11064,6 +11064,8 @@ var _class = function (_Phaser$Sprite) {
     _this.addChild(_this.playersprite);
 
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
+
+    _this.laser = game.add.audio('Laser');
     return _this;
   }
 
@@ -11109,6 +11111,7 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
+        this.laser.play();
       }
     }
   }, {
