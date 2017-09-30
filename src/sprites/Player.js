@@ -14,7 +14,6 @@ export default class extends Phaser.Sprite {
     this.animations.add('right', [5, 6, 7, 8], 10, true);
 
     this.cursors = game.input.keyboard.createCursorKeys();
-<<<<<<< HEAD
     this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
     this.weapon = game.add.weapon(40, 'bullet');      
@@ -27,10 +26,8 @@ export default class extends Phaser.Sprite {
     this.cursors = this.game.input.keyboard.createCursorKeys();
     
         this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-=======
     this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
     this.addChild(this.weaponsprite);
->>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
   }
 
   update() {

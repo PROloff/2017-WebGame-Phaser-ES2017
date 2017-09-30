@@ -4304,11 +4304,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */130);
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
-=======
-module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
->>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
 
 
 /***/ }),
@@ -11009,7 +11005,6 @@ var _class = function (_Phaser$Sprite) {
     _this.animations.add('right', [5, 6, 7, 8], 10, true);
 
     _this.cursors = game.input.keyboard.createCursorKeys();
-<<<<<<< HEAD
     _this.jumpButton = game.input.keyboard.addKey(_phaserCe2.default.Keyboard.SPACEBAR);
 
     _this.weapon = game.add.weapon(40, 'bullet');
@@ -11022,10 +11017,8 @@ var _class = function (_Phaser$Sprite) {
     _this.cursors = _this.game.input.keyboard.createCursorKeys();
 
     _this.fireButton = _this.game.input.keyboard.addKey(_phaserCe2.default.KeyCode.SPACEBAR);
-=======
     _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
     _this.addChild(_this.weaponsprite);
->>>>>>> f66988a1a7d8a33d5a577f35bb9eae8ddbf2a4eb
     return _this;
   }
 
