@@ -10855,6 +10855,7 @@ var _class = function (_Phaser$State) {
       this.load.image('background', 'assets/images/background.jpg');
       this.load.spritesheet('dude2', 'assets/images/dude2.png', 32, 48);
       this.load.image('weapon', 'assets/images/waffe1.png');
+      this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
     }
   }, {
     key: 'create',
@@ -11011,7 +11012,10 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('turn', [4], 20, true);
     _this.playersprite.animations.add('right', [5, 6, 7, 8], 10, true);
     _this.cursors = cursors;
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon2');
+    _this.weaponsprite.animations.add('left', [1], 1, true);
+    _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.addChild(_this.weaponsprite);
     _this.addChild(_this.playersprite);
 
@@ -11030,6 +11034,7 @@ var _class = function (_Phaser$Sprite) {
         if (this.facing != 'left') {
           this.playersprite.animations.play('left');
           this.facing = 'left';
+          this.weaponsprite.animations.play('left');
         }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
@@ -11037,6 +11042,7 @@ var _class = function (_Phaser$Sprite) {
         if (this.facing != 'right') {
           this.playersprite.animations.play('right');
           this.facing = 'right';
+          this.weaponsprite.animations.play('right');
         }
       } else {
         if (this.facing != 'idle') {
