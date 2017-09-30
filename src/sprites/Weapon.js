@@ -2,7 +2,7 @@ import Phaser from 'phaser-ce';
 
 export default class extends Phaser.Sprite {
   constructor ( game, parent) {
-    super(game, 0, 0, 'bullet1');
+    super(game, 0, 0, 'bulletR');
     
    
     
@@ -11,7 +11,7 @@ export default class extends Phaser.Sprite {
     
 
 
-    this.weapon = game.add.weapon(40, 'bullet1');      
+    this.weapon = game.add.weapon(40, 'bulletR');      
     this.weapon.setBulletFrames(0, 80, true);    
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     this.weapon.bulletSpeed = 500;
