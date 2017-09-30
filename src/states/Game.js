@@ -25,7 +25,7 @@ export default class extends Phaser.State {
     this.player2 = new Player2 (game, 'dude2', player2keys, 'bulletB');
     this.player2.position = new Phaser.Point (innerWidth-100, 0);
     this.add.existing (this.player2);
-    this.map = game.add.tilemap("testmap");
+    this.map = game.add.tilemap("map");
     this.map.addTilesetImage("Tileset1");
     this.map.setCollisionByExclusion([0]);
     this.layer = this.map.createLayer("Kachelebene 1");
