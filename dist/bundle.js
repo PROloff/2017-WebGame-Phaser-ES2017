@@ -4310,7 +4310,11 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */130);
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
+=======
+module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */332);
+>>>>>>> fa3e997d24252988ec8e42316bfe6e05fed0e996
 
 
 /***/ }),
@@ -10860,7 +10864,7 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
+      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
       this.load.image('background', 'assets/images/Hintergrund1.png');
       this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/strasse.png');
