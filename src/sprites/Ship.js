@@ -11,7 +11,7 @@ export default class extends Phaser.Sprite {
 
     this.angle = -90;
 
-    this.weapon = new phaser.Weapon(40, 'bullet');      
+    this.weapon = game.add.weapon(40, 'bullet');      
     this.weapon.setBulletFrames(0, 80, true);    
     this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     this.weapon.bulletSpeed = 400;

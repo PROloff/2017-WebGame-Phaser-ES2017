@@ -4340,7 +4340,7 @@ var _class = function (_Phaser$Sprite) {
 
         _this.angle = -90;
 
-        _this.weapon = new phaser.Weapon(40, 'bullet');
+        _this.weapon = game.add.weapon(40, 'bullet');
         _this.weapon.setBulletFrames(0, 80, true);
         _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
         _this.weapon.bulletSpeed = 400;
@@ -4422,15 +4422,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
-=======
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
-=======
-module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */333);
->>>>>>> 2deae8e5841d5bfd85d50af8f235795140e322db
->>>>>>> 1f9103aad2422f7794468f091c2960d3d1b67e7e
 
 
 /***/ }),
