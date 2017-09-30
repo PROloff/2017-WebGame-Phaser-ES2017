@@ -11000,6 +11000,9 @@ var _class = function (_Phaser$Sprite) {
     _this.body.collideWorldBounds = true;
     _this.body.setSize(20, 32, 5, 16);
 
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
+    _this.addChild(_this.weaponsprite);
+
     _this.animations.add('left', [0, 1, 2, 3], 10, true);
     _this.animations.add('turn', [4], 20, true);
     _this.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -11017,8 +11020,7 @@ var _class = function (_Phaser$Sprite) {
     _this.cursors = _this.game.input.keyboard.createCursorKeys();
 
     _this.fireButton = _this.game.input.keyboard.addKey(_phaserCe2.default.KeyCode.SPACEBAR);
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 5, 'weapon');
-    _this.addChild(_this.weaponsprite);
+
     return _this;
   }
 

@@ -9,6 +9,9 @@ export default class extends Phaser.Sprite {
     this.body.collideWorldBounds = true;
     this.body.setSize(20, 32, 5, 16);
 
+    this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
+    this.addChild(this.weaponsprite);
+
     this.animations.add('left', [0, 1, 2, 3], 10, true);
     this.animations.add('turn', [4], 20, true);
     this.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -25,9 +28,8 @@ export default class extends Phaser.Sprite {
     this.weapon.trackSprite(this, 0, 0, true);
     this.cursors = this.game.input.keyboard.createCursorKeys();
     
-        this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-    this.weaponsprite = new Phaser.Sprite(game, 0, 5, 'weapon');
-    this.addChild(this.weaponsprite);
+    this.fireButton = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+    
   }
 
   update() {
