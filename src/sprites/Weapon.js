@@ -10,7 +10,7 @@ export default class extends Phaser.Sprite {
     this.weapon.bulletGravity = new Phaser.Point (0,-250);
     this.weapon.fireRate = 600;
 
-    this.weapon.trackSprite(parent, 60, 70, true);
+    this.weapon.trackSprite(parent, 35, 38, true);
 
     
    
