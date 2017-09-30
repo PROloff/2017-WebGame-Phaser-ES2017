@@ -4330,9 +4330,10 @@ var _class = function (_Phaser$Sprite) {
   function _class(game, parent) {
     _classCallCheck(this, _class);
 
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bullet1'));
+    //this.bulletGravity.y=0 ;
 
-    _this.bulletGravity.y = 0;
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, 'bullet1'));
 
     _this.weapon = game.add.weapon(40, 'bullet1');
     _this.weapon.setBulletFrames(0, 80, true);
