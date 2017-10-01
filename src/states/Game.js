@@ -50,12 +50,12 @@ export default class extends Phaser.State {
 
   collisionHandeler1 (obj1, obj2)
   {
-    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
+    this.state.start('GameOver');
   }
 
   collisionHandeler2 (obj1, obj2)
   {
-    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
+    this.state.start('GameOverB');
   }
 
   render() { 
