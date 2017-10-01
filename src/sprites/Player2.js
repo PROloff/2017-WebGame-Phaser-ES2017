@@ -12,9 +12,9 @@ export default class extends Phaser.Sprite {
     this.body.setSize(30, 50, 20, 10);
 
     this.playersprite = new Phaser.Sprite(game, 0, 0, spritekey);
-    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
+    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 20, true);
     this.playersprite.animations.add('idleL', [6], 10, true);
-    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
+    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 20, true);
     this.playersprite.animations.add('idleR', [7], 10, true);
     
     this.cursors = cursors;
@@ -42,7 +42,7 @@ export default class extends Phaser.Sprite {
     this.body.velocity.x = 0;
     this.jumpTimer = 0;
     if (this.cursors.left.isDown) {
-      this.body.velocity.x = -150;
+      this.body.velocity.x = -220;
 
       //if (this.facing != 'left') {
         this.playersprite.animations.play('left');
@@ -53,7 +53,7 @@ export default class extends Phaser.Sprite {
      // }
     }
     else if (this.cursors.right.isDown) {
-      this.body.velocity.x = 150;
+      this.body.velocity.x = 220;
 
       //if (this.facing != 'right') {
         this.playersprite.animations.play('right');
