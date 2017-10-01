@@ -4268,7 +4268,7 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 35, 38, true);
+    _this.weapon.trackSprite(parent, 34, 40, true);
 
     _this.laser = game.add.audio('Laser');
 
