@@ -12,4 +12,5 @@ export default class extends Phaser.State {
    this.end = game.add.audio('End');
    this.end.play();
  }
+ 
 }
