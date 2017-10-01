@@ -4310,7 +4310,7 @@ exports.default = _class;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */130);
-module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
+module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */332);
 
 
 /***/ }),
@@ -10862,8 +10862,8 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
       this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/retro.png');
+      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/strasse.png');
       this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
       this.load.image('weapon', 'assets/images/waffe1.png');
       this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
