@@ -3172,11 +3172,11 @@ var _class = function (_Phaser$Sprite) {
     key: 'fire',
     value: function fire(facing) {
       if (facing == 'left') {
-        this.weapon.bulletSpeed = -1000;
+        this.weapon.bulletSpeed = -500;
         this.weapon.fire();
         //this.laser.play();
       } else {
-        this.weapon.bulletSpeed = 1000;
+        this.weapon.bulletSpeed = 500;
         this.weapon.fire();
         //this.laser.play();
       }
@@ -4347,7 +4347,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(30, 50, 20, 10);
+    _this.body.setSize(30, 50, 20, 13);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 20, true);
@@ -11144,7 +11144,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       game.debug.text(game.time.suggestedFps, 32, 32);
-      //game.debug.body(this.player);
+      game.debug.body(this.player);
     }
   }]);
 
@@ -11396,7 +11396,8 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/background.jpg');
+      this.load.image('background', 'assets/images/stadt3.jpg');
+
       this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/retro.png');
       this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
