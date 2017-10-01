@@ -55,13 +55,13 @@ export default class extends Phaser.State {
   {
     this.fatality = game.add.audio('Fatality');
     this.fatality.play();
-    this.state.start('GameOver');
+    his.state.start('GameOver');
   }
 
   collisionHandeler2 (obj1, obj2)
   {
-      this.fatality = game.add.audio('Fatality');
-      this.fatality.play();
+    this.fatality = game.add.audio('Fatality');
+    this.fatality.play();
       this.state.start('GameOverB');
   }
 
@@ -69,8 +69,6 @@ export default class extends Phaser.State {
     game.debug.text(game.time.suggestedFps, 32, 32);
     //game.debug.body(this.player);
   }
-}//test
-//test2
-//test 3
+}
 
 

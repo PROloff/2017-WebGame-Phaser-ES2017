@@ -11132,7 +11132,7 @@ var _class = function (_Phaser$State) {
     value: function collisionHandeler1(obj1, obj2) {
       this.fatality = game.add.audio('Fatality');
       this.fatality.play();
-      this.state.start('GameOver');
+      his.state.start('GameOver');
     }
   }, {
     key: 'collisionHandeler2',
@@ -11150,10 +11150,7 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
-}(_phaserCe2.default.State); //test
-//test2
-//test 3
-
+}(_phaserCe2.default.State);
 
 exports.default = _class;
 
