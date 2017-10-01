@@ -5,6 +5,7 @@ export default class extends Phaser.State {
 
  create () {
    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
-   
+   this.fatality = game.add.audio('Fatality');
+   this.fatality.play();
  }
 }
