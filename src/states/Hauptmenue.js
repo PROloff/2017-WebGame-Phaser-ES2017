@@ -1,12 +1,14 @@
 import Phaser from 'phaser-ce';
 
 
+
 export default class extends Phaser.State {
+  
 
  create () {
-    this.Hauptmenue=this.add.sprite(0,0, 'hauptmenue');
+    this.Hauptmenue=this.add.sprite(0,0, 'background2');
     this.Hauptmenue.anchor.set(0.5,0.5);
-    var hauptmenuekeys = game.input.keyboard.addKeys ( { 'lvl1' : Phaser.KeyCode.One,'lvl2':Phaser.KeyCode.Two});
+    
 
    this.resize();
  }
@@ -18,11 +20,11 @@ export default class extends Phaser.State {
  }
  update(){
 
-   if(this.hauptmenuekeys.lvl1.isDown)
+   if(game.input.keyboard.isDown(Phaser.Keyboard.ONE))
   {
     this.state.start('Level1');
   }
-   if(this.hauptmenuekeys.lvl2.isDown)
+   if(game.input.keyboard.isDown(Phaser.Keyboard.TWO))
   {
     this.state.start('Level2');
   }

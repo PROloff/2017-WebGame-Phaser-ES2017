@@ -1,4 +1,6 @@
 import Phaser from 'phaser-ce';
+import Weapon from '../sprites/Weapon';
+import Player2 from '../sprites/Player2';
 
 export default class extends Phaser.State {
   init () {}
