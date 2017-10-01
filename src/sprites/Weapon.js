@@ -23,17 +23,24 @@ export default class extends Phaser.Sprite {
   fire(facing) {
     if (facing == 'left')
     { 
+<<<<<<< HEAD
       this.weapon.bulletSpeed = -600;
+=======
+      this.weapon.bulletSpeed = -500;
+>>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
       this.weapon.fire();
       this.laser.play();
     }
     else
     {
+<<<<<<< HEAD
       this.weapon.bulletSpeed = 600;
+=======
+      this.weapon.bulletSpeed = 500;
+>>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
       this.weapon.fire();
       this.laser.play();
     }
-    
-   
+
   }
 }
