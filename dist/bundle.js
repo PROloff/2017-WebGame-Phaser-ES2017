@@ -4226,6 +4226,85 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /* 126 */,
 /* 127 */,
 /* 128 */
+<<<<<<< HEAD
+=======
+/*!*******************************!*\
+  !*** ./src/sprites/Weapon.js ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game, parent, bullet) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, bullet));
+
+    _this.weapon = game.add.weapon(40, bullet);
+    _this.weapon.setBulletFrames(0, 80, true);
+    _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
+    _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
+    _this.weapon.fireRate = 600;
+
+    _this.weapon.trackSprite(parent, 35, 38, true);
+
+    _this.laser = game.add.audio('Laser');
+
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'fire',
+    value: function fire(facing) {
+      if (facing == 'left') {
+        this.weapon.bulletSpeed = -500;
+        this.weapon.fire();
+        this.laser.play();
+      } else {
+        this.weapon.bulletSpeed = 500;
+        this.weapon.fire();
+        this.laser.play();
+      }
+    }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.Sprite);
+
+exports.default = _class;
+
+/***/ }),
+/* 129 */
+>>>>>>> e007ef97e815fe8f72098a8608112ba1339433bf
 /*!******************************************!*\
   !*** multi babel-polyfill ./src/Game.js ***!
   \******************************************/
@@ -4233,8 +4312,13 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! babel-polyfill */129);
 module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */331);
+=======
+__webpack_require__(/*! babel-polyfill */130);
+module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */332);
+>>>>>>> e007ef97e815fe8f72098a8608112ba1339433bf
 
 
 /***/ }),
@@ -10788,7 +10872,22 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
+<<<<<<< HEAD
       this.load.image('background2', ['assets/images/background2.jpg']);
+=======
+      this.load.image('bulletR', 'assets/images/bulletRot.png');
+      this.load.image('bulletB', 'assets/images/bulletBlau.png');
+      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
+      this.load.image('background', 'assets/images/Hintergrund1.png');
+      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/strasse.png');
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
+      this.load.image('weapon', 'assets/images/waffe1.png');
+      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
+      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
+      this.load.image('Red', 'assets/images/RedWinsnew.png');
+      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+>>>>>>> e007ef97e815fe8f72098a8608112ba1339433bf
     }
   }, {
     key: 'create',
@@ -10963,7 +11062,30 @@ var _class = function (_Phaser$Sprite) {
   function _class(game, parent, bullet) {
     _classCallCheck(this, _class);
 
+<<<<<<< HEAD
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, bullet));
+=======
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
+
+    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
+
+    _this.body.bounce.y = 0.1;
+    _this.body.collideWorldBounds = true;
+    _this.body.setSize(30, 55, 20, 10);
+
+    _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
+    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
+    _this.playersprite.animations.add('idleL', [6], 10, true);
+    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
+    _this.playersprite.animations.add('idleR', [7], 10, true);
+    _this.cursors = cursors;
+
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
+    _this.weaponsprite.animations.add('left', [1], 1, true);
+    _this.weaponsprite.animations.add('right', [0], 1, true);
+    _this.weaponsprite.animations.play('left');
+    _this.addChild(_this.weaponsprite);
+>>>>>>> e007ef97e815fe8f72098a8608112ba1339433bf
 
     _this.weapon = game.add.weapon(40, bullet);
     _this.weapon.setBulletFrames(0, 80, true);
@@ -10977,6 +11099,7 @@ var _class = function (_Phaser$Sprite) {
   }
 
   _createClass(_class, [{
+<<<<<<< HEAD
     key: 'fire',
     value: function fire(facing) {
       if (facing == 'left') {
@@ -10985,6 +11108,53 @@ var _class = function (_Phaser$Sprite) {
       } else {
         this.weapon.bulletSpeed = 500;
         this.weapon.fire();
+=======
+    key: 'update',
+    value: function update() {
+      this.body.velocity.x = 0;
+      this.jumpTimer = 0;
+      if (this.cursors.left.isDown) {
+        this.body.velocity.x = -150;
+
+        //if (this.facing != 'left') {
+        this.playersprite.animations.play('left');
+        this.facing = 'left';
+        this.weaponsprite.animations.play('left');
+        this.weaponsprite.position.x = -20;
+
+        // }
+      } else if (this.cursors.right.isDown) {
+        this.body.velocity.x = 150;
+
+        //if (this.facing != 'right') {
+        this.playersprite.animations.play('right');
+        this.facing = 'right';
+        this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 20;
+        // }
+      } else {
+        if (this.facing != 'idle') {
+          //this.playersprite.animations.stop();
+
+
+          if (this.facing == 'left') {
+            this.frame = 0;
+            this.playersprite.animations.play('idleL');
+          } else {
+            this.frame = 5;
+            this.playersprite.animations.play('idleR');
+          }
+        }
+      }
+
+      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+        this.body.velocity.y = -350;
+        this.jumpTimer = game.time.now + 750;
+      }
+
+      if (this.cursors.fire.isDown) {
+        this.weapon.fire(this.facing);
+>>>>>>> e007ef97e815fe8f72098a8608112ba1339433bf
       }
       this.weapon.fire();
     }

@@ -12,9 +12,10 @@ export default class extends Phaser.Sprite {
     this.body.setSize(30, 55, 20, 10);
 
     this.playersprite = new Phaser.Sprite(game, 0, 0, spritekey);
-    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-    this.playersprite.animations.add('turn', [6], 20, true);
-    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
+    this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
+    this.playersprite.animations.add('idleL', [6], 10, true);
+    this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
+    this.playersprite.animations.add('idleR', [7], 10, true);
     this.cursors = cursors;
 
     this.weaponsprite = new Phaser.Sprite(game, 0, 10, 'weapon2');
@@ -28,7 +29,7 @@ export default class extends Phaser.Sprite {
     
     this.weapon = new Weapon(this.game, this, bullet);
 
-    this.laser = game.add.audio('Laser');
+    
   }
   
   get bullets (){
@@ -41,33 +42,36 @@ export default class extends Phaser.Sprite {
     if (this.cursors.left.isDown) {
       this.body.velocity.x = -150;
 
-      if (this.facing != 'left') {
+      //if (this.facing != 'left') {
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
         this.weaponsprite.position.x = -20;
        
-      }
+     // }
     }
     else if (this.cursors.right.isDown) {
       this.body.velocity.x = 150;
 
-      if (this.facing != 'right') {
+      //if (this.facing != 'right') {
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 20;
-      }
+     // }
     }
     else {
       if (this.facing != 'idle') {
-        this.playersprite.animations.stop();
+        //this.playersprite.animations.stop();
+        
 
         if (this.facing == 'left') {
           this.frame = 0;
+          this.playersprite.animations.play('idleL')
         }
         else {
           this.frame = 5;
+          this.playersprite.animations.play('idleR')
         }
       }
     }
@@ -87,7 +91,7 @@ export default class extends Phaser.Sprite {
     { 
 >>>>>>> 1ee8985f9cab18e571e68803835e2a73ca4b4e73
       this.weapon.fire(this.facing);
-      this.laser.play();
+     
     }
   }
 }
