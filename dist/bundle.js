@@ -10870,8 +10870,8 @@ var _class = function (_Phaser$State) {
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
       this.load.image('Red', 'assets/images/RedWinsnew.png');
       this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
-      this.load.audio('Laser', 'assets/sounds1/FIGHT.mp3');
-      this.load.audio('Laser', 'assets/sounds1/FATALITY.mp3');
+      this.load.audio('Fight', 'assets/sounds1/FIGHT.mp3');
+      this.load.audio('Fatality', 'assets/sounds1/FATALITY.mp3');
     }
   }, {
     key: 'create',
