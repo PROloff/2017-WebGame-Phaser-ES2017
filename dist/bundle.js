@@ -10965,6 +10965,9 @@ var _class = function (_Phaser$State) {
       this.layer = this.map.createLayer("Kachelebene 1");
       //this.level = new Level(game);
       //this.add.existing(this.level);
+
+      this.fight = game.add.audio('Fight');
+      this.fight.play();
     }
   }, {
     key: 'update',
