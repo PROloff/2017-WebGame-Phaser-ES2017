@@ -11010,6 +11010,8 @@ var _class = function (_Phaser$State) {
       //
 
       this.load.image('background2', '../../assets/images/background2.jpg');
+      this.load.audio('Menue', '../../assets/sounds1/MENU.mp3');
+      this.load.audio('End', '../../assets/sounds1/END.mp3');
     }
   }, {
     key: 'create',
@@ -11104,6 +11106,9 @@ var _class = function (_Phaser$State) {
       this.layer = this.map.createLayer("Kachelebene 1");
       //this.level = new Level(game);
       //this.add.existing(this.level);
+
+      this.fight = game.add.audio('Fight');
+      this.fight.play();
     }
   }, {
     key: 'update',
@@ -11125,11 +11130,15 @@ var _class = function (_Phaser$State) {
   }, {
     key: 'collisionHandeler1',
     value: function collisionHandeler1(obj1, obj2) {
-      this.state.start('GameOver');
+      this.fatality = game.add.audio('Fatality');
+      this.fatality.play();
+      his.state.start('GameOver');
     }
   }, {
     key: 'collisionHandeler2',
     value: function collisionHandeler2(obj1, obj2) {
+      this.fatality = game.add.audio('Fatality');
+      this.fatality.play();
       this.state.start('GameOverB');
     }
   }, {
@@ -11191,6 +11200,11 @@ var _class = function (_Phaser$State) {
     key: 'create',
     value: function create() {
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
+      var currentTime = new Date().getTime();
+
+      while (currentTime + 1000 >= new Date().getTime()) {}
+      this.end = game.add.audio('End');
+      this.end.play();
     }
   }]);
 
@@ -11242,6 +11256,11 @@ var _class = function (_Phaser$State) {
     key: 'create',
     value: function create() {
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
+      var currentTime = new Date().getTime();
+
+      while (currentTime + 1000 >= new Date().getTime()) {}
+      this.end = game.add.audio('End');
+      this.end.play();
     }
   }]);
 
@@ -11295,6 +11314,9 @@ var _class = function (_Phaser$State) {
       this.Hauptmenue = this.add.sprite(0, 0, 'background2');
       this.Hauptmenue.anchor.set(0.5, 0.5);
 
+      this.menue = game.add.audio('Menue');
+      this.menue.play();
+
       this.resize();
     }
   }, {
@@ -11309,9 +11331,11 @@ var _class = function (_Phaser$State) {
 
       if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.ONE)) {
         this.state.start('Level1');
+        this.menue.destroy();
       }
       if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.TWO)) {
         this.state.start('Level2');
+        this.menue.destroy();
       }
     }
   }]);
@@ -11393,6 +11417,8 @@ var _class = function (_Phaser$State) {
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
       this.load.image('Red', 'assets/images/RedWinsnew.png');
       this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+      this.load.audio('Fight', 'assets/sounds1/FIGHT.mp3');
+      this.load.audio('Fatality', 'assets/sounds1/FATALITY.mp3');
     }
   }, {
     key: 'create',
@@ -11479,6 +11505,8 @@ var _class = function (_Phaser$State) {
       this.load.image('Blue', 'assets/images/BlueWinsnew.png');
       this.load.image('Red', 'assets/images/RedWinsnew.png');
       this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+      this.load.audio('Fight', 'assets/sounds1/FIGHT.mp3');
+      this.load.audio('Fatality', 'assets/sounds1/FATALITY.mp3');
     }
   }, {
     key: 'create',

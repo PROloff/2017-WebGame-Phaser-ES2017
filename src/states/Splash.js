@@ -13,7 +13,8 @@ export default class extends Phaser.State {
     //
    
     this.load.image('background2','../../assets/images/background2.jpg');
-    
+    this.load.audio('Menue', '../../assets/sounds1/MENU.mp3');
+    this.load.audio('End', '../../assets/sounds1/END.mp3');
   }
 
   create () {
