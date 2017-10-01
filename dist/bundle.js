@@ -11130,11 +11130,15 @@ var _class = function (_Phaser$State) {
   }, {
     key: 'collisionHandeler1',
     value: function collisionHandeler1(obj1, obj2) {
-      this.state.start('GameOver');
+      this.fatality = game.add.audio('Fatality');
+      this.fatality.play();
+      his.state.start('GameOver');
     }
   }, {
     key: 'collisionHandeler2',
     value: function collisionHandeler2(obj1, obj2) {
+      this.fatality = game.add.audio('Fatality');
+      this.fatality.play();
       this.state.start('GameOverB');
     }
   }, {
@@ -11196,8 +11200,11 @@ var _class = function (_Phaser$State) {
     key: 'create',
     value: function create() {
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
-      this.fatality = game.add.audio('Fatality');
-      this.fatality.play();
+      var currentTime = new Date().getTime();
+
+      while (currentTime + 1000 >= new Date().getTime()) {}
+      this.end = game.add.audio('End');
+      this.end.play();
     }
   }]);
 
@@ -11249,8 +11256,11 @@ var _class = function (_Phaser$State) {
     key: 'create',
     value: function create() {
       this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
-      this.fatality = game.add.audio('Fatality');
-      this.fatality.play();
+      var currentTime = new Date().getTime();
+
+      while (currentTime + 1000 >= new Date().getTime()) {}
+      this.end = game.add.audio('End');
+      this.end.play();
     }
   }]);
 

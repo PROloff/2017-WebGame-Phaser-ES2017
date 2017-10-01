@@ -53,12 +53,16 @@ export default class extends Phaser.State {
 
   collisionHandeler1 (obj1, obj2)
   {
-    this.state.start('GameOver');
+    this.fatality = game.add.audio('Fatality');
+    this.fatality.play();
+    his.state.start('GameOver');
   }
 
   collisionHandeler2 (obj1, obj2)
   {
-    this.state.start('GameOverB');
+    this.fatality = game.add.audio('Fatality');
+    this.fatality.play();
+      this.state.start('GameOverB');
   }
 
   render() { 
