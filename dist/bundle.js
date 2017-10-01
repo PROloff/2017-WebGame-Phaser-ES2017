@@ -4268,7 +4268,9 @@ var _class = function (_Phaser$Sprite) {
     _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
     _this.weapon.fireRate = 600;
 
-    _this.weapon.trackSprite(parent, 35, 38, true);
+    _this.weapon.trackSprite(parent, 34, 40, true);
+
+    _this.laser = game.add.audio('Laser');
 
     return _this;
   }
@@ -4279,11 +4281,12 @@ var _class = function (_Phaser$Sprite) {
       if (facing == 'left') {
         this.weapon.bulletSpeed = -500;
         this.weapon.fire();
+        this.laser.play();
       } else {
         this.weapon.bulletSpeed = 500;
         this.weapon.fire();
+        this.laser.play();
       }
-      this.weapon.fire();
     }
   }, {
     key: 'bullets',
@@ -10667,6 +10670,18 @@ var _GameOver = __webpack_require__(/*! ./states/GameOver */ 341);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
 
+var _Hauptmenue = __webpack_require__(/*! ./states/Hauptmenue */ 343);
+
+var _Hauptmenue2 = _interopRequireDefault(_Hauptmenue);
+
+var _Level = __webpack_require__(/*! ./states/Level1 */ 344);
+
+var _Level2 = _interopRequireDefault(_Level);
+
+var _Level3 = __webpack_require__(/*! ./states/Level2 */ 345);
+
+var _Level4 = _interopRequireDefault(_Level3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10691,6 +10706,9 @@ var Game = function (_Phaser$Game) {
     _this.state.add('Splash', _Splash2.default, false);
     _this.state.add('Game', _Game2.default, false);
     _this.state.add('GameOver', _GameOver2.default, false);
+    _this.state.add('Hauptmenue', _Hauptmenue2.default, false);
+    _this.state.add('Level1', _Level2.default, false);
+    _this.state.add('Level2', _Level4.default, false);
 
     _this.state.start('Boot');
     return _this;
@@ -10788,6 +10806,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       if (this.fontsReady) {
+
         this.state.start('Splash');
       }
     }
@@ -10855,23 +10874,13 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
-      this.load.image('bulletR', 'assets/images/bulletRot.png');
-      this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/strasse.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
-      this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
-      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
-      this.load.image('Red', 'assets/images/RedWinsnew.png');
-      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+      this.load.image('background2', '../../assets/images/background2.jpg');
     }
   }, {
     key: 'create',
     value: function create() {
-      this.state.start('Game');
+
+      this.state.start('Hauptmenue');
     }
   }]);
 
@@ -10997,7 +11006,10 @@ var _class = function (_Phaser$State) {
   }]);
 
   return _class;
-}(_phaserCe2.default.State);
+}(_phaserCe2.default.State); //test
+//test2
+//test 3
+
 
 exports.default = _class;
 
@@ -11050,12 +11062,14 @@ var _class = function (_Phaser$Sprite) {
     _this.body.setSize(30, 50, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-    _this.playersprite.animations.add('turn', [6], 20, true);
-    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
+    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 15, true);
+    _this.playersprite.animations.add('idleL', [6], 10, true);
+    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
+    _this.playersprite.animations.add('idleR', [7], 10, true);
+
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 25, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11065,7 +11079,6 @@ var _class = function (_Phaser$Sprite) {
 
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
 
-    _this.laser = game.add.audio('Laser');
     return _this;
   }
 
@@ -11077,29 +11090,33 @@ var _class = function (_Phaser$Sprite) {
       if (this.cursors.left.isDown) {
         this.body.velocity.x = -150;
 
-        if (this.facing != 'left') {
-          this.playersprite.animations.play('left');
-          this.facing = 'left';
-          this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = -20;
-        }
+        //if (this.facing != 'left') {
+        this.playersprite.animations.play('left');
+        this.facing = 'left';
+        this.weaponsprite.animations.play('left');
+        this.weaponsprite.position.x = -5;
+
+        // }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 150;
 
-        if (this.facing != 'right') {
-          this.playersprite.animations.play('right');
-          this.facing = 'right';
-          this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 20;
-        }
+        //if (this.facing != 'right') {
+        this.playersprite.animations.play('right');
+        this.facing = 'right';
+        this.weaponsprite.animations.play('right');
+        this.weaponsprite.position.x = 35;
+        // }
       } else {
         if (this.facing != 'idle') {
-          this.playersprite.animations.stop();
+          //this.playersprite.animations.stop();
+
 
           if (this.facing == 'left') {
             this.frame = 0;
+            this.playersprite.animations.play('idleL');
           } else {
             this.frame = 5;
+            this.playersprite.animations.play('idleR');
           }
         }
       }
@@ -11111,7 +11128,6 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
-        this.laser.play();
       }
     }
   }, {
@@ -11177,6 +11193,250 @@ var _class = function (_Phaser$State) {
     value: function resize() {
       this.gameOver.x = this.world.centerX;
       this.gameOver.y = this.world.centerY;
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.State);
+
+exports.default = _class;
+
+/***/ }),
+/* 342 */,
+/* 343 */
+/*!**********************************!*\
+  !*** ./src/states/Hauptmenue.js ***!
+  \**********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$State) {
+  _inherits(_class, _Phaser$State);
+
+  function _class() {
+    _classCallCheck(this, _class);
+
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'create',
+    value: function create() {
+      this.Hauptmenue = this.add.sprite(0, 0, 'background2');
+      this.Hauptmenue.anchor.set(0.5, 0.5);
+
+      this.resize();
+    }
+  }, {
+    key: 'resize',
+    value: function resize() {
+      this.Hauptmenue.x = this.world.centerX;
+      this.Hauptmenue.y = this.world.centerY;
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+
+      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.ONE)) {
+        this.state.start('Level1');
+      }
+      if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.TWO)) {
+        this.state.start('Level2');
+      }
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.State);
+
+exports.default = _class;
+
+/***/ }),
+/* 344 */
+/*!******************************!*\
+  !*** ./src/states/Level1.js ***!
+  \******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 128);
+
+var _Weapon2 = _interopRequireDefault(_Weapon);
+
+var _Player = __webpack_require__(/*! ../sprites/Player2 */ 340);
+
+var _Player2 = _interopRequireDefault(_Player);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$State) {
+  _inherits(_class, _Phaser$State);
+
+  function _class() {
+    _classCallCheck(this, _class);
+
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'preload',
+    value: function preload() {
+      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
+      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
+
+      this.load.setPreloadSprite(this.loaderBar);
+      //
+      // load your assets
+      //
+      this.load.image('bulletR', 'assets/images/bulletRot.png');
+      this.load.image('bulletB', 'assets/images/bulletBlau.png');
+      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
+      this.load.image('background', 'assets/images/Hintergrund1.png');
+      this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/retro.png');
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
+      this.load.image('weapon', 'assets/images/waffe1.png');
+      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
+      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
+      this.load.image('Red', 'assets/images/RedWinsnew.png');
+      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+    }
+  }, {
+    key: 'create',
+    value: function create() {
+
+      this.state.start('Game');
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.State);
+
+exports.default = _class;
+
+/***/ }),
+/* 345 */
+/*!******************************!*\
+  !*** ./src/states/Level2.js ***!
+  \******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 128);
+
+var _Weapon2 = _interopRequireDefault(_Weapon);
+
+var _Player = __webpack_require__(/*! ../sprites/Player2 */ 340);
+
+var _Player2 = _interopRequireDefault(_Player);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$State) {
+  _inherits(_class, _Phaser$State);
+
+  function _class() {
+    _classCallCheck(this, _class);
+
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'preload',
+    value: function preload() {
+      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
+      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
+
+      this.load.setPreloadSprite(this.loaderBar);
+      //
+      // load your assets
+      //
+      this.load.image('bulletR', 'assets/images/bulletRot.png');
+      this.load.image('bulletB', 'assets/images/bulletBlau.png');
+      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
+      this.load.image('background', 'assets/images/Hintergrund1.png');
+      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
+      this.load.image('Tileset1', 'assets/map/strasse.png');
+      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
+      this.load.image('weapon', 'assets/images/waffe1.png');
+      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
+      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
+      this.load.image('Red', 'assets/images/RedWinsnew.png');
+      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+    }
+  }, {
+    key: 'create',
+    value: function create() {
+
+      this.state.start('Game');
     }
   }]);
 
