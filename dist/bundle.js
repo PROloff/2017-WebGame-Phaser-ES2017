@@ -2133,8 +2133,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.weapon.trackSprite(parent, 34, 40, true);
 
-    //this.laser = game.add.audio('Laser');
-
+    _this.laser = game.add.audio('Laser');
 
     return _this;
   }
@@ -2145,11 +2144,11 @@ var _class = function (_Phaser$Sprite) {
       if (facing == 'left') {
         this.weapon.bulletSpeed = -500;
         this.weapon.fire();
-        //this.laser.play();
+        this.laser.play();
       } else {
         this.weapon.bulletSpeed = 500;
         this.weapon.fire();
-        //this.laser.play();
+        this.laser.play();
       }
     }
   }, {
@@ -3257,8 +3256,6 @@ var _class = function (_Phaser$Sprite) {
 
     _this.addChild(_this.playersprite);
 
-    _this.laser = game.add.audio('Laser');
-
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
 
     return _this;
@@ -3310,7 +3307,6 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
-        this.laser.play();
       }
     }
   }, {
@@ -11014,6 +11010,8 @@ var _class = function (_Phaser$State) {
       //
 
       this.load.image('background2', '../../assets/images/background2.jpg');
+      this.load.audio('Menue', '../../assets/sounds1/MENU.mp3');
+      this.load.audio('End', '../../assets/sounds1/END.mp3');
     }
   }, {
     key: 'create',
@@ -11106,7 +11104,6 @@ var _class = function (_Phaser$State) {
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
       this.layer = this.map.createLayer("Kachelebene 1");
-      //this.layer.setCollisionByExclusion([0]);
       //this.level = new Level(game);
       //this.add.existing(this.level);
 
@@ -11144,7 +11141,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       game.debug.text(game.time.suggestedFps, 32, 32);
-      game.debug.body(this.player);
+      //game.debug.body(this.player);
     }
   }]);
 
@@ -11307,6 +11304,9 @@ var _class = function (_Phaser$State) {
       this.Hauptmenue = this.add.sprite(0, 0, 'background2');
       this.Hauptmenue.anchor.set(0.5, 0.5);
 
+      this.menue = game.add.audio('Menue');
+      this.menue.play();
+
       this.resize();
     }
   }, {
@@ -11321,9 +11321,11 @@ var _class = function (_Phaser$State) {
 
       if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.ONE)) {
         this.state.start('Level1');
+        this.menue.destroy();
       }
       if (game.input.keyboard.isDown(_phaserCe2.default.Keyboard.TWO)) {
         this.state.start('Level2');
+        this.menue.destroy();
       }
     }
   }]);

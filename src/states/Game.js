@@ -29,7 +29,6 @@ export default class extends Phaser.State {
     this.map.addTilesetImage("Tileset1");
     this.map.setCollisionByExclusion([0]);
     this.layer = this.map.createLayer("Kachelebene 1");
-    //this.layer.setCollisionByExclusion([0]);
     //this.level = new Level(game);
     //this.add.existing(this.level);
 
@@ -64,7 +63,7 @@ export default class extends Phaser.State {
 
   render() { 
     game.debug.text(game.time.suggestedFps, 32, 32);
-    game.debug.body(this.player);
+    //game.debug.body(this.player);
   }
 }//test
 //test2
