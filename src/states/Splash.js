@@ -11,6 +11,7 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
+   
     this.load.image('background2','../../assets/images/background2.jpg');
     
   }

@@ -16,7 +16,7 @@ export default class extends Phaser.State {
 
     this.game.physics.arcade.gravity.y = 250;
 
-    var player1keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.W, 'left' : Phaser.KeyCode.A, 'right' : Phaser.KeyCode.D, 'fire' : Phaser.KeyCode.SPACEBAR})
+    var player1keys = game.input.keyboard.addKeys ( { 'up' : Phaser.KeyCode.W, 'left' : Phaser.KeyCode.A, 'right' : Phaser.KeyCode.D, 'fire' : Phaser.KeyCode.SPACEBAR })
     this.player = new Player2 (game, 'dude', player1keys, 'bulletR');
     this.player.position = new Phaser.Point (100, 0);
     this.add.existing (this.player);
@@ -50,12 +50,12 @@ export default class extends Phaser.State {
 
   collisionHandeler1 (obj1, obj2)
   {
-    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
+    this.state.start('GameOver');
   }
 
   collisionHandeler2 (obj1, obj2)
   {
-    this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
+    this.state.start('GameOverB');
   }
 
   render() { 
