@@ -4226,6 +4226,85 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /* 126 */,
 /* 127 */,
 /* 128 */
+<<<<<<< HEAD
+=======
+/*!*******************************!*\
+  !*** ./src/sprites/Weapon.js ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 31);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(game, parent, bullet) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 0, 0, bullet));
+
+    _this.weapon = game.add.weapon(40, bullet);
+    _this.weapon.setBulletFrames(0, 80, true);
+    _this.weapon.bulletKillType = _phaserCe2.default.Weapon.KILL_WORLD_BOUNDS;
+    _this.weapon.bulletGravity = new _phaserCe2.default.Point(0, -250);
+    _this.weapon.fireRate = 600;
+
+    _this.weapon.trackSprite(parent, 34, 40, true);
+
+    _this.laser = game.add.audio('Laser');
+
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'fire',
+    value: function fire(facing) {
+      if (facing == 'left') {
+        this.weapon.bulletSpeed = -500;
+        this.weapon.fire();
+        this.laser.play();
+      } else {
+        this.weapon.bulletSpeed = 500;
+        this.weapon.fire();
+        this.laser.play();
+      }
+    }
+  }, {
+    key: 'bullets',
+    get: function get() {
+      return this.weapon.bullets;
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.Sprite);
+
+exports.default = _class;
+
+/***/ }),
+/* 129 */
+>>>>>>> 70fe1ff0122f3c9cd9588f81843e0ca66162a07b
 /*!******************************************!*\
   !*** multi babel-polyfill ./src/Game.js ***!
   \******************************************/
@@ -11066,9 +11145,10 @@ var _class = function (_Phaser$Sprite) {
     _this.playersprite.animations.add('idleL', [6], 10, true);
     _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 15, true);
     _this.playersprite.animations.add('idleR', [7], 10, true);
+
     _this.cursors = cursors;
 
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
+    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 25, 'weapon2');
     _this.weaponsprite.animations.add('left', [1], 1, true);
     _this.weaponsprite.animations.add('right', [0], 1, true);
     _this.weaponsprite.animations.play('left');
@@ -11093,7 +11173,7 @@ var _class = function (_Phaser$Sprite) {
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
-        this.weaponsprite.position.x = -20;
+        this.weaponsprite.position.x = -5;
 
         // }
       } else if (this.cursors.right.isDown) {
@@ -11103,7 +11183,7 @@ var _class = function (_Phaser$Sprite) {
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
-        this.weaponsprite.position.x = 20;
+        this.weaponsprite.position.x = 35;
         // }
       } else {
         if (this.facing != 'idle') {
