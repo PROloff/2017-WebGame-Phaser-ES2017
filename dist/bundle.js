@@ -11136,7 +11136,7 @@ var _class = function (_Phaser$State) {
     key: 'render',
     value: function render() {
       game.debug.text(game.time.suggestedFps, 32, 32);
-      game.debug.body(this.player);
+      //game.debug.body(this.player);
     }
   }]);
 
