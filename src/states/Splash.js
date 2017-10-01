@@ -11,6 +11,7 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
+<<<<<<< HEAD
     this.load.image('bulletR', 'assets/images/bulletRot.png');
     this.load.image('bulletB', 'assets/images/bulletBlau.png');
     this.load.spritesheet('dude','assets/images/dudeRot_klein.png', 64, 64);
@@ -25,10 +26,15 @@ export default class extends Phaser.State {
     this.load.audio ('Laser','assets/sounds1/LASER.mp3');
     this.load.audio ('Fight','assets/sounds1/FIGHT.mp3');
     this.load.audio ('Fatality','assets/sounds1/FATALITY.mp3');
+=======
+    this.load.image('background2','../../assets/images/background2.jpg');
+    
+>>>>>>> 1a4c910cb03c6ec2a29fa697c8eaa8a7fd1796d0
   }
 
   create () {
-    this.state.start('Game');
+    
+    this.state.start('Hauptmenue');
   }
 }
 
