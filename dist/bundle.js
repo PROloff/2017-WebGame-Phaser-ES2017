@@ -4439,11 +4439,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\paulr\Desktop\Hackathon\Jump-n-Gun\src\Game.js */333);
-=======
-module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */333);
->>>>>>> d4fdd99c8a27399eebce4664fb9bf0b2b156205b
 
 
 /***/ }),
@@ -11409,8 +11405,7 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/Stadt.jpg');
-      this.load.image('background', 'assets/images/background.jpg');
+
       this.load.image('background', 'assets/images/stadt3.jpg');
       this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/retro.png');
