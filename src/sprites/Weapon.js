@@ -18,6 +18,7 @@ export default class extends Phaser.Sprite {
   }
   get bullets (){
     return this.weapon.bullets;
+    this.laser.play();
   }
 
   fire(facing) {
@@ -25,15 +26,12 @@ export default class extends Phaser.Sprite {
     { 
       this.weapon.bulletSpeed = -500;
       this.weapon.fire();
-      this.laser.play();
     }
     else
     {
       this.weapon.bulletSpeed = 500;
       this.weapon.fire();
-      this.laser.play();
     }
-    
-   
+
   }
 }

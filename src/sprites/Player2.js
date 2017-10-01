@@ -27,6 +27,7 @@ export default class extends Phaser.Sprite {
 
     this.addChild(this.playersprite);
 
+    this.laser = game.add.audio('Laser');
     
     this.weapon = new Weapon(this.game, this, bullet);
 
@@ -85,7 +86,7 @@ export default class extends Phaser.Sprite {
     if (this.cursors.fire.isDown)
     { 
       this.weapon.fire(this.facing);
-     
+      this.laser.play();
     }
   }
 }

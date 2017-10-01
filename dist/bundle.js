@@ -2144,17 +2144,16 @@ var _class = function (_Phaser$Sprite) {
       if (facing == 'left') {
         this.weapon.bulletSpeed = -500;
         this.weapon.fire();
-        this.laser.play();
       } else {
         this.weapon.bulletSpeed = 500;
         this.weapon.fire();
-        this.laser.play();
       }
     }
   }, {
     key: 'bullets',
     get: function get() {
       return this.weapon.bullets;
+      this.laser.play();
     }
   }]);
 
@@ -3256,6 +3255,8 @@ var _class = function (_Phaser$Sprite) {
 
     _this.addChild(_this.playersprite);
 
+    _this.laser = game.add.audio('Laser');
+
     _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
 
     return _this;
@@ -3307,6 +3308,7 @@ var _class = function (_Phaser$Sprite) {
 
       if (this.cursors.fire.isDown) {
         this.weapon.fire(this.facing);
+        this.laser.play();
       }
     }
   }, {
