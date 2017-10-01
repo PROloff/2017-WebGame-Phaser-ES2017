@@ -12,13 +12,12 @@ export default class extends Phaser.Sprite {
 
     this.weapon.trackSprite(parent, 34, 40, true);
 
-    this.laser = game.add.audio('Laser');
+    //this.laser = game.add.audio('Laser');
    
     
   }
   get bullets (){
     return this.weapon.bullets;
-    this.laser.play();
   }
 
   fire(facing) {
@@ -26,11 +25,13 @@ export default class extends Phaser.Sprite {
     { 
       this.weapon.bulletSpeed = -500;
       this.weapon.fire();
+      //this.laser.play();
     }
     else
     {
       this.weapon.bulletSpeed = 500;
       this.weapon.fire();
+      //this.laser.play();
     }
 
   }
