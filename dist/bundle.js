@@ -3238,7 +3238,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-    _this.body.setSize(30, 55, 20, 10);
+    _this.body.setSize(30, 50, 20, 10);
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 20, true);
@@ -10799,6 +10799,10 @@ var _GameOver = __webpack_require__(/*! ./states/GameOver */ 341);
 
 var _GameOver2 = _interopRequireDefault(_GameOver);
 
+var _GameOverB = __webpack_require__(/*! ./states/GameOverB */ 346);
+
+var _GameOverB2 = _interopRequireDefault(_GameOverB);
+
 var _Hauptmenue = __webpack_require__(/*! ./states/Hauptmenue */ 342);
 
 var _Hauptmenue2 = _interopRequireDefault(_Hauptmenue);
@@ -10835,6 +10839,7 @@ var Game = function (_Phaser$Game) {
     _this.state.add('Splash', _Splash2.default, false);
     _this.state.add('Game', _Game2.default, false);
     _this.state.add('GameOver', _GameOver2.default, false);
+    _this.state.add('GameOverB', _GameOverB2.default, false);
     _this.state.add('Hauptmenue', _Hauptmenue2.default, false);
     _this.state.add('Level1', _Level2.default, false);
     _this.state.add('Level2', _Level4.default, false);
@@ -11003,18 +11008,7 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
-      this.load.image('bulletR', 'assets/images/bulletRot.png');
-      this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/strasse.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
-      this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
-      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
-      this.load.image('Red', 'assets/images/RedWinsnew.png');
-      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
+
       this.load.image('background2', '../../assets/images/background2.jpg');
     }
   }, {
@@ -11131,12 +11125,12 @@ var _class = function (_Phaser$State) {
   }, {
     key: 'collisionHandeler1',
     value: function collisionHandeler1(obj1, obj2) {
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
+      this.state.start('GameOver');
     }
   }, {
     key: 'collisionHandeler2',
     value: function collisionHandeler2(obj1, obj2) {
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
+      this.state.start('GameOverB');
     }
   }, {
     key: 'render',
@@ -11196,15 +11190,7 @@ var _class = function (_Phaser$State) {
   _createClass(_class, [{
     key: 'create',
     value: function create() {
-      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'background');
-
-      this.resize();
-    }
-  }, {
-    key: 'resize',
-    value: function resize() {
-      this.gameOver.x = this.world.centerX;
-      this.gameOver.y = this.world.centerY;
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Blue');
     }
   }]);
 
@@ -11346,8 +11332,8 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/Hintergrund1.png');
+      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
+      this.load.image('background', 'assets/images/background.jpg');
       this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/retro.png');
       this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
@@ -11432,7 +11418,7 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
+      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
       this.load.image('background', 'assets/images/Hintergrund1.png');
       this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/strasse.png');
@@ -11448,6 +11434,58 @@ var _class = function (_Phaser$State) {
     value: function create() {
 
       this.state.start('Game');
+    }
+  }]);
+
+  return _class;
+}(_phaserCe2.default.State);
+
+exports.default = _class;
+
+/***/ }),
+/* 345 */,
+/* 346 */
+/*!*********************************!*\
+  !*** ./src/states/GameOverB.js ***!
+  \*********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaserCe = __webpack_require__(/*! phaser-ce */ 27);
+
+var _phaserCe2 = _interopRequireDefault(_phaserCe);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$State) {
+  _inherits(_class, _Phaser$State);
+
+  function _class() {
+    _classCallCheck(this, _class);
+
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+  }
+
+  _createClass(_class, [{
+    key: 'create',
+    value: function create() {
+      this.bg = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'Red');
     }
   }]);
 
