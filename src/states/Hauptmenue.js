@@ -18,13 +18,13 @@ export default class extends Phaser.State {
  }
  update(){
 
- if(this.hauptmenuekeys.lvl1.isDown)
- {
-  this.state.start('Level1');
+   if(this.hauptmenuekeys.lvl1.isDown)
+  {
+    this.state.start('Level1');
+  }
+   if(this.hauptmenuekeys.lvl2.isDown)
+  {
+    this.state.start('Level2');
+  }
  }
- if(this.hauptmenuekeys.lvl2.isDown)
- {
-  this.state.start('Level2');
- }
-}
 }
