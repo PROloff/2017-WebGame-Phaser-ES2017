@@ -42,27 +42,27 @@ export default class extends Phaser.Sprite {
     if (this.cursors.left.isDown) {
       this.body.velocity.x = -220;
 
-      //if (this.facing != 'left') {
+     
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
         this.weaponsprite.position.x = -5;
        
-     // }
+     
     }
     else if (this.cursors.right.isDown) {
       this.body.velocity.x = 220;
 
-      //if (this.facing != 'right') {
+      
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 35;
-     // }
+     
     }
     else {
       if (this.facing != 'idle') {
-        //this.playersprite.animations.stop();
+        
         
 
         if (this.facing == 'left') {
