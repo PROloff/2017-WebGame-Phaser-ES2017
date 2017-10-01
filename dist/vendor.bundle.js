@@ -147,12 +147,12 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 345);
+/******/ 	return __webpack_require__(__webpack_require__.s = 346);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 127:
+/***/ 126:
 /*!*****************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/pixi.js ***!
   \*****************************************************/
@@ -165,7 +165,7 @@
 
 /***/ }),
 
-/***/ 128:
+/***/ 127:
 /*!***************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/p2.js ***!
   \***************************************************/
@@ -178,7 +178,7 @@
 
 /***/ }),
 
-/***/ 129:
+/***/ 128:
 /*!*****************************************************!*\
   !*** ./node_modules/webfontloader/webfontloader.js ***!
   \*****************************************************/
@@ -106589,7 +106589,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 345:
+/***/ 346:
 /*!******************************************!*\
   !*** multi pixi p2 phaser webfontloader ***!
   \******************************************/
@@ -106597,10 +106597,17 @@ process.umask = function() { return 0; };
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! pixi */127);
 __webpack_require__(/*! p2 */128);
 __webpack_require__(/*! phaser */27);
 module.exports = __webpack_require__(/*! webfontloader */129);
+=======
+__webpack_require__(/*! pixi */126);
+__webpack_require__(/*! p2 */127);
+__webpack_require__(/*! phaser */21);
+module.exports = __webpack_require__(/*! webfontloader */128);
+>>>>>>> e73022a01c5f40b8730f0b51d1a1ff341f8db70d
 
 
 /***/ }),
