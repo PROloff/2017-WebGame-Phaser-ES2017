@@ -16,8 +16,12 @@ export default class extends Phaser.State {
 
  }
 
+ if(game.input.keyboard.1.isDown)
+ {
+  this.state.start('Level1');
+ }
  if(this.cursors.2.isDown)
  {
-   
+  this.state.start('Level2');
  }
 }

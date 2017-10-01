@@ -10861,22 +10861,7 @@ var _class = function (_Phaser$State) {
       //
       // load your assets
       //
-      this.load.image('bulletR', 'assets/images/bulletRot.png');
-      this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeGrün_klein.png', 64, 64);
-      this.load.image('background', 'assets/images/Hintergrund1.png');
-      this.load.tilemap('map', 'assets/map/Land.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/strasse.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
-      this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2.png', 64, 64);
-<<<<<<< HEAD
-      this.load.image('hauptmenue', 'assets/images/background2.jpg');
-=======
-      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
-      this.load.image('Red', 'assets/images/RedWinsnew.png');
-      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
->>>>>>> 1ee8985f9cab18e571e68803835e2a73ca4b4e73
+      this.load.image('background2', ['assets/images/background2.jpg']);
     }
   }, {
     key: 'create',
@@ -11007,16 +10992,11 @@ var _class = function (_Phaser$State) {
     }
   }]);
 
-<<<<<<< HEAD
-    return _class;
+  return _class;
 }(_phaserCe2.default.State); //test
 //test2
 //test 3
 
-=======
-  return _class;
-}(_phaserCe2.default.State);
->>>>>>> 1ee8985f9cab18e571e68803835e2a73ca4b4e73
 
 exports.default = _class;
 
@@ -11027,126 +11007,9 @@ exports.default = _class;
   \********************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 29);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-var _Weapon = __webpack_require__(/*! ./Weapon */ 128);
-
-var _Weapon2 = _interopRequireDefault(_Weapon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$Sprite) {
-  _inherits(_class, _Phaser$Sprite);
-
-  function _class(game, spritekey, cursors, bullet) {
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, 100, 0));
-
-    _this.game.physics.enable(_this, _phaserCe2.default.Physics.ARCADE);
-
-    _this.body.bounce.y = 0.1;
-    _this.body.collideWorldBounds = true;
-    _this.body.setSize(30, 55, 20, 10);
-
-    _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
-    _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
-    _this.playersprite.animations.add('turn', [6], 20, true);
-    _this.playersprite.animations.add('right', [8, 9, 10, 11, 12], 10, true);
-    _this.cursors = cursors;
-
-    _this.weaponsprite = new _phaserCe2.default.Sprite(game, 0, 10, 'weapon2');
-    _this.weaponsprite.animations.add('left', [1], 1, true);
-    _this.weaponsprite.animations.add('right', [0], 1, true);
-    _this.weaponsprite.animations.play('left');
-    _this.addChild(_this.weaponsprite);
-
-    _this.addChild(_this.playersprite);
-
-    _this.weapon = new _Weapon2.default(_this.game, _this, bullet);
-
-    _this.laser = game.add.audio('Laser');
-    return _this;
-  }
-
-  _createClass(_class, [{
-    key: 'update',
-    value: function update() {
-      this.body.velocity.x = 0;
-      this.jumpTimer = 0;
-      if (this.cursors.left.isDown) {
-        this.body.velocity.x = -150;
-
-        if (this.facing != 'left') {
-          this.playersprite.animations.play('left');
-          this.facing = 'left';
-          this.weaponsprite.animations.play('left');
-          this.weaponsprite.position.x = -20;
-        }
-      } else if (this.cursors.right.isDown) {
-        this.body.velocity.x = 150;
-
-        if (this.facing != 'right') {
-          this.playersprite.animations.play('right');
-          this.facing = 'right';
-          this.weaponsprite.animations.play('right');
-          this.weaponsprite.position.x = 20;
-        }
-      } else {
-        if (this.facing != 'idle') {
-          this.playersprite.animations.stop();
-
-          if (this.facing == 'left') {
-            this.frame = 0;
-          } else {
-            this.frame = 5;
-          }
-        }
-      }
-
-      if (this.cursors.up.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-        this.body.velocity.y = -350;
-        this.jumpTimer = game.time.now + 750;
-      }
-
-      if (this.cursors.fire.isDown) {
-        game.load.audio('laser', 'assets/audio/laser6.mp3');
-        var laser;
-        playFx(keys.laser);
-        this.weapon.fire(this.facing);
-        this.laser.play();
-      }
-    }
-  }, {
-    key: 'bullets',
-    get: function get() {
-      return this.weapon.bullets;
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.Sprite);
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: C:/Users/schueler.S9-NEU/Desktop/Jump-n-Gun/src/sprites/Player2.js: Unexpected token (81:0)\n\n\u001b[0m \u001b[90m 79 | \u001b[39m\n \u001b[90m 80 | \u001b[39m    \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcursors\u001b[33m.\u001b[39mfire\u001b[33m.\u001b[39misDown)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 81 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 82 | \u001b[39m    {\n \u001b[90m 83 | \u001b[39m      game\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39maudio(\u001b[32m'laser'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/audio/laser6.mp3'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 84 | \u001b[39m      \u001b[36mvar\u001b[39m laser\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 341 */
@@ -11217,7 +11080,7 @@ exports.default = _class;
 /***/ (function(module, exports) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: C:/Users/schueler.S9-NEU/Desktop/Jump-n-Gun/src/states/Hauptmenue.js: Unexpected token (19:4)\n\n\u001b[0m \u001b[90m 17 | \u001b[39m }\n \u001b[90m 18 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 | \u001b[39m \u001b[36mif\u001b[39m(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcursors\u001b[35m.2\u001b[39m\u001b[33m.\u001b[39misDown)\n \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 | \u001b[39m {\n \u001b[90m 21 | \u001b[39m   \n \u001b[90m 22 | \u001b[39m }\u001b[0m\n");
+throw new Error("Module build failed: SyntaxError: C:/Users/schueler.S9-NEU/Desktop/Jump-n-Gun/src/states/Hauptmenue.js: Unexpected token, expected , (19:8)\n\n\u001b[0m \u001b[90m 17 | \u001b[39m }\n \u001b[90m 18 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 | \u001b[39m \u001b[36mif\u001b[39m(game\u001b[33m.\u001b[39minput\u001b[33m.\u001b[39mkeyboard\u001b[35m.1\u001b[39m\u001b[33m.\u001b[39misDown)\n \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 | \u001b[39m {\n \u001b[90m 21 | \u001b[39m  \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mstart(\u001b[32m'Level1'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 22 | \u001b[39m }\u001b[0m\n");
 
 /***/ })
 ],[129]);
