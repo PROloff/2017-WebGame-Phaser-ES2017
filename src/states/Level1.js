@@ -16,11 +16,7 @@ export default class extends Phaser.State {
     this.load.image('bulletR', 'assets/images/bulletRot.png');
     this.load.image('bulletB', 'assets/images/bulletBlau.png');
     this.load.spritesheet('dude','assets/images/dudeRot_klein.png', 64, 64);
-<<<<<<< HEAD
-    this.load.image('background', 'assets/images/Hintergrund1.png');
-=======
     this.load.image('background', 'assets/images/background.jpg');
->>>>>>> ed7971bc34dc50886e190d6ade48d27b2c6d4973
     this.load.tilemap('map', 'assets/map/Level-Retro.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('Tileset1', 'assets/map/retro.png')
     this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
