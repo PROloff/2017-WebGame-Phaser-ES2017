@@ -11,8 +11,23 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
+<<<<<<< HEAD
+    this.load.image('bulletR', 'assets/images/bulletRot.png');
+    this.load.image('bulletB', 'assets/images/bulletBlau.png');
+    this.load.spritesheet('dude','assets/images/dudeGrün_klein.png', 64, 64);
+    this.load.image('background', 'assets/images/Hintergrund1.png');
+    this.load.tilemap('map', 'assets/map/Land.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('Tileset1', 'assets/map/strasse.png')
+    this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
+    this.load.image('weapon', 'assets/images/waffe1.png');
+    this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
+    this.load.image ('Blue','assets/images/BlueWinsnew.png');
+    this.load.image ('Red','assets/images/RedWinsnew.png');
+    this.load.audio ('Laser','assets/sounds1/LASER.mp3');
+=======
     this.load.image('background2','../../assets/images/background2.jpg');
     
+>>>>>>> 1a4c910cb03c6ec2a29fa697c8eaa8a7fd1796d0
   }
 
   create () {
