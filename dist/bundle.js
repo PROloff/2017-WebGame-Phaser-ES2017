@@ -2142,19 +2142,11 @@ var _class = function (_Phaser$Sprite) {
     key: 'fire',
     value: function fire(facing) {
       if (facing == 'left') {
-<<<<<<< HEAD
         this.weapon.bulletSpeed = -600;
         this.weapon.fire();
         this.laser.play();
       } else {
         this.weapon.bulletSpeed = 600;
-=======
-        this.weapon.bulletSpeed = -500;
-        this.weapon.fire();
-        this.laser.play();
-      } else {
-        this.weapon.bulletSpeed = 500;
->>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
         this.weapon.fire();
         this.laser.play();
       }
@@ -3246,11 +3238,7 @@ var _class = function (_Phaser$Sprite) {
 
     _this.body.bounce.y = 0.1;
     _this.body.collideWorldBounds = true;
-<<<<<<< HEAD
-    _this.body.setSize(30, 50, 20, 10);
-=======
     _this.body.setSize(30, 50, 20, 13);
->>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
 
     _this.playersprite = new _phaserCe2.default.Sprite(game, 0, 0, spritekey);
     _this.playersprite.animations.add('left', [5, 4, 3, 2, 1, 0], 20, true);
@@ -4451,7 +4439,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */131);
-module.exports = __webpack_require__(/*! C:\Users\schueler.S9-NEU\Desktop\Jump-n-Gun\src\Game.js */333);
+module.exports = __webpack_require__(/*! /Users/marten/Desktop/Jump-n-Gun/src/Game.js */333);
 
 
 /***/ }),
@@ -11364,95 +11352,10 @@ exports.default = _class;
   \******************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _phaserCe = __webpack_require__(/*! phaser-ce */ 18);
-
-var _phaserCe2 = _interopRequireDefault(_phaserCe);
-
-var _Weapon = __webpack_require__(/*! ../sprites/Weapon */ 65);
-
-var _Weapon2 = _interopRequireDefault(_Weapon);
-
-var _Player = __webpack_require__(/*! ../sprites/Player2 */ 92);
-
-var _Player2 = _interopRequireDefault(_Player);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$State) {
-  _inherits(_class, _Phaser$State);
-
-  function _class() {
-    _classCallCheck(this, _class);
-
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-  }
-
-  _createClass(_class, [{
-    key: 'init',
-    value: function init() {}
-  }, {
-    key: 'preload',
-    value: function preload() {
-      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
-      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-
-      this.load.setPreloadSprite(this.loaderBar);
-      //
-      // load your assets
-      //
-      this.load.image('bulletR', 'assets/images/bulletRot.png');
-      this.load.image('bulletB', 'assets/images/bulletBlau.png');
-      this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
-<<<<<<< HEAD
-      this.load.image('background', 'assets/images/Stadt.jpg');
-      this.load.image('background', 'assets/images/background.jpg');
-=======
-      this.load.image('background', 'assets/images/stadt3.jpg');
-
->>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
-      this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
-      this.load.image('Tileset1', 'assets/map/retro.png');
-      this.load.spritesheet('dude2', 'assets/images/dudeBlau_klein.png', 64, 64);
-      this.load.image('weapon', 'assets/images/waffe1.png');
-      this.load.spritesheet('weapon2', 'assets/images/waffe2_klein.png', 32, 32);
-      this.load.image('Blue', 'assets/images/BlueWinsnew.png');
-      this.load.image('Red', 'assets/images/RedWinsnew.png');
-      this.load.audio('Laser', 'assets/sounds1/LASER.mp3');
-<<<<<<< HEAD
-=======
-      this.load.audio('Fight', 'assets/sounds1/FIGHT.mp3');
-      this.load.audio('Fatality', 'assets/sounds1/FATALITY.mp3');
->>>>>>> c08145c4fc9994460b8bd0ad962699b2d8da2f9e
-    }
-  }, {
-    key: 'create',
-    value: function create() {
-
-      this.state.start('Game');
-    }
-  }]);
-
-  return _class;
-}(_phaserCe2.default.State);
-
-exports.default = _class;
+throw new Error("Module build failed: SyntaxError: Unexpected token (19:0)\n\n\u001b[0m \u001b[90m 17 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mimage(\u001b[32m'bulletB'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/images/bulletBlau.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mspritesheet(\u001b[32m'dude'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'assets/images/dudeRot_klein.png'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m64\u001b[39m\u001b[33m,\u001b[39m \u001b[35m64\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mimage(\u001b[32m'background'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/images/Stadt.jpg'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 21 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mload\u001b[33m.\u001b[39mimage(\u001b[32m'background'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'assets/images/background.jpg'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 22 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 345 */
