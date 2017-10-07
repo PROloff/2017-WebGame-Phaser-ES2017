@@ -3269,26 +3269,19 @@ var _class = function (_Phaser$Sprite) {
       if (this.cursors.left.isDown) {
         this.body.velocity.x = -220;
 
-        //if (this.facing != 'left') {
         this.playersprite.animations.play('left');
         this.facing = 'left';
         this.weaponsprite.animations.play('left');
         this.weaponsprite.position.x = -5;
-
-        // }
       } else if (this.cursors.right.isDown) {
         this.body.velocity.x = 220;
 
-        //if (this.facing != 'right') {
         this.playersprite.animations.play('right');
         this.facing = 'right';
         this.weaponsprite.animations.play('right');
         this.weaponsprite.position.x = 35;
-        // }
       } else {
         if (this.facing != 'idle') {
-          //this.playersprite.animations.stop();
-
 
           if (this.facing == 'left') {
             this.frame = 0;
@@ -11104,8 +11097,6 @@ var _class = function (_Phaser$State) {
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
       this.layer = this.map.createLayer("Kachelebene 1");
-      //this.level = new Level(game);
-      //this.add.existing(this.level);
 
       this.fight = game.add.audio('Fight');
       this.fight.play();
@@ -11405,7 +11396,6 @@ var _class = function (_Phaser$State) {
       this.load.image('bulletR', 'assets/images/bulletRot.png');
       this.load.image('bulletB', 'assets/images/bulletBlau.png');
       this.load.spritesheet('dude', 'assets/images/dudeRot_klein.png', 64, 64);
-
       this.load.image('background', 'assets/images/stadt3.jpg');
       this.load.tilemap('map', 'assets/map/Level-Retro.json', null, _phaserCe2.default.Tilemap.TILED_JSON);
       this.load.image('Tileset1', 'assets/map/retro.png');
