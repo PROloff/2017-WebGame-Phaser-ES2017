@@ -11093,6 +11093,7 @@ var _class = function (_Phaser$State) {
       this.player2 = new _Player2.default(game, 'dude2', player2keys, 'bulletB');
       this.player2.position = new _phaserCe2.default.Point(innerWidth - 100, 0);
       this.add.existing(this.player2);
+
       this.map = game.add.tilemap("map");
       this.map.addTilesetImage("Tileset1");
       this.map.setCollisionByExclusion([0]);
